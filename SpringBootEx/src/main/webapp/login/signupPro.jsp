@@ -12,7 +12,10 @@
 	</script>
 </c:if>
 <c:if test="${result eq 1}">
-	<c:redirect url="logonlogin"/>		
+	<script type="text/javascript">
+		alert("회원가입에 성공하였습니다!!");
+	</script>
+	<c:redirect url="logon"/>		
 </c:if>
 
 <c:if test="${result eq 2}">

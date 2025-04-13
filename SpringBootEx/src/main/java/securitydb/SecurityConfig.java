@@ -48,7 +48,7 @@ public class SecurityConfig {
 		).authorizeHttpRequests(
 			authz -> authz.requestMatchers("/fail", "/signup/**","/home/**", 
 					"/login/**", "/logon/**", "/input/**", "/security/**", 
-					"main", "/sendmail/**", "/mail/**").permitAll()
+					"main", "/sendmail/**", "/sendmailcheck", "/mail/**").permitAll()
 					.requestMatchers( "/member/**").hasRole( "MEMBER" )
 					.requestMatchers( "/admin/**" ).hasRole( "ADMIN" )
 					.anyRequest().authenticated()

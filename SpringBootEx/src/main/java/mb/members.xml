@@ -9,14 +9,8 @@
  		INSERT INTO members (userId, passwd, nickname, auth, email, block_id)
 		VALUES (#{userId}, #{passwd}, #{nickname},'ROLE_MEMBER' ,#{email, jdbcType=VARCHAR}, '0')
  	</insert>
+ 
  	
- 	<select id="check" parameterType="String" resultType="int">
- 		select count(*) from members where user_id=#{userId}
- 	</select>
- 	
- 	<select id="checkNickname" parameterType="String" resultType="int">
- 		select count(*) from members where nickname=#{nickname}
- 	</select>
  	
 
  	

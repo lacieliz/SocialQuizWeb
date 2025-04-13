@@ -11,7 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
+//로그인 실패 컨트롤러
 @Controller
 @RequestMapping( "/fail" )
 public class SetFailurePage {
