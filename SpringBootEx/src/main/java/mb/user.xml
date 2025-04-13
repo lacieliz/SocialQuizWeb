@@ -25,5 +25,12 @@
  	<select id="checkNickname" parameterType="String" resultType="int">
  		select count(*) from members where nickname=#{nickname}
  	</select>
+ 	<select id="checkPwd" parameterType="String" resultType="int">
+ 		select count(*) from members where userId=#{userId} and passwd=#{passwd}
+ 	</select>
+ 	
+ 	 	<delete id="deleteUser" parameterType="String">
+ 		delete from members where userId=#{userId}
+ 	</delete>
 </mapper>
 

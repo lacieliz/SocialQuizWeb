@@ -11,7 +11,9 @@ public interface UserMapper {
 	int checkId(String userId);
 	int checkEmail(String email);
 	int checkNickname(String nickname);
-	
+	int checkPwd(String userId, String passwd);
+
 	String findId(String email);
+	int deleteUser(String id);
 }
 

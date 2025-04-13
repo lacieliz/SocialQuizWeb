@@ -12,6 +12,7 @@ let msg_email_change = "비밀번호가 성공적으로 변경되었습니다.";
 
 let error_input = "회원가입에 실패했습니다.\n잠시 후 다시 시도하세요";
 let error_login = "입력하신 아이디 또는 비밀번호가 일치하지 않습니다.\n다시 확인하세요.";
+let error_passwd = "비밀번호가 일치하지 않습니다.\n다시 입력하세요.";
 let error_delete = "회원탈퇴에 실패했습니다.\n잠시 후 다시 시도하세요";
 let error_modify = "회원정보수정에 실패했습니다.\n잠시 후 다시 시도하세요";
 let error_id_incorrect =  "아이디가 일치하지 않습니다. \n다시 확인해주세요.";

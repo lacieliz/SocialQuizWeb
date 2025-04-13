@@ -5,9 +5,7 @@
 
  <mapper namespace="logon.MemberMapper">
  	
- 	<delete id="deleteMember" parameterType="String">
- 		delete from members where user_id=#{userId}
- 	</delete>
+
  	
  	<select id="getMember" parameterType="String" resultType="logon.LogonDataBean">
  		select * from members where userId = #{userId}	

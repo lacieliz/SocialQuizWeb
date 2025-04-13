@@ -24,12 +24,12 @@ public class LogonDelete {
 	@PostMapping
 	public String deletePro( HttpSession session, @RequestParam String passwd, 
 		Model model ) throws Exception {			
-		String id = (String) session.getAttribute( "memId" );
-		int resultCheck = logonDao.check( id, passwd );
-		model.addAttribute( "resultCheck", resultCheck );
+		String userId = (String) session.getAttribute( "memId" );
+		int checkPwd = logonDao.check( userId, passwd );
+		model.addAttribute( "checkPwd", checkPwdCheck );
 				
-		if( resultCheck == 1 ) {
-			int result = logonDao.deleteMember( id );
+		if( checkPwd == 1 ) {
+			int result = logonDao.deleteMember( userId );
 			model.addAttribute( "result", result );
 			if( result == 1 )
 				session.removeAttribute( "memId" );	
