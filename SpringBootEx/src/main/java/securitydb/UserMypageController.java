@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 @Controller
 @RequestMapping( "/mypage" )
-public class LogonPage {
+public class UserMypageController {
 	@GetMapping
 	public String logonPage( ) {		
 		return "user/mypage";

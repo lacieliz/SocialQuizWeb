@@ -55,13 +55,13 @@
 					<input class="inputbutton" type="submit" value="${btn_mod}">
 					<input class="inputbutton" type="reset" value="${btn_cancle}">
 					<input class="inputbutton" type="button" value="${btn_mod_cancle}"
-						onclick="location='logonmain'">
+						onclick="location='mypage'">
 				</th>
 			</tr>
 		</table>			
 	</form>
 </c:if>
-<c:if test="${result eq -1}">
+<c:if test="${result eq 0}">
 	<script type="text/javascript">		
 		erroralert( error_passwd );
 	</script>

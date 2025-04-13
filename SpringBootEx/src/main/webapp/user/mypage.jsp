@@ -19,7 +19,7 @@
     
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
-      <li><a href="#logonmodify" class="nav-link" onclick="loadPage(event, 'usermodify')">회원정보수정</a></li>
+      <li><a href="#logonmodify" class="nav-link" onclick="loadPage(event, 'modifyuser')">회원정보수정</a></li>
       <li><a href="#logondelete" class="nav-link" onclick="loadPage(event, 'deleteuser')">회원탈퇴</a></li>
       <li><a href="#socketchat" class="nav-link" onclick="loadPage(event, #)">이메일인증	</a></li>
       <li><a href="#qnawrite" class="nav-link" onclick="loadPage(event, 'qnawrite')">1:1문의</a></li>

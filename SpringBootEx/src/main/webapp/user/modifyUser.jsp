@@ -5,7 +5,7 @@
 <script type="text/javascript" src="${project}script_member.js"></script>  
 
 <h2> ${page_modify} </h2>
-<form name="passwdform" method="post" action="logonmodify">
+<form name="passwdform" method="post" action="modifyuser">
 	<table>
 		<tr>
 			<th colspan="2"> ${msg_passwd} </th>
@@ -18,7 +18,7 @@
 			<th colspan="2">
 				<input class="inputbutton" type="submit" value="${btn_mod}">
 				<input class="inputbutton" type="button" value="${btn_mod_cancle}"
-					onclick="location='logonmain'">
+					onclick="location='mypage'">
 			</th>
 		</tr>		
 	</table>
