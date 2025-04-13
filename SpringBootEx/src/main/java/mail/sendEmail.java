@@ -73,7 +73,7 @@ public class sendEmail {
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Mail Sent Successfully...");
+		System.out.println("[/sendmail] 메일 전송 성공!");
 		session.setAttribute("authKey",key);
         session.setAttribute("email", email);
 		return "success";

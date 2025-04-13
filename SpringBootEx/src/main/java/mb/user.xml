@@ -11,11 +11,14 @@
 		VALUES (#{userId}, #{passwd}, #{nickname}, 'ROLE_MEMBER', #{email}, sysdate , null, '0')
     </insert>
     
-    	
+    <select id="findId" parameterType="String" resultType="String">
+ 		select userId from members where email = #{email}	
+ 	</select>
+    
+    <!--Check SQL-->
  	<select id="checkId" parameterType="String" resultType="int">
  		select count(*) from members where userId=#{userId}
  	</select>
- 	
     <select id="checkEmail" parameterType="String" resultType="int">
  		select count(*) from members where email=#{email}
  	</select>

@@ -41,8 +41,8 @@
 		 		
 			 	<p>
 			 		<tr align="center">
-			 			<a href="logonfindid" class="no-underline">아이디 찾기 </a> 
-			 			<a href="logonfindpwd" class="no-underline"> 비밀번호 찾기 </a>
+			 			<a href="/findid" class="no-underline">아이디 찾기 </a> 
+			 			<a href="/findpwd" class="no-underline"> 비밀번호 찾기 </a>
 			 		</tr>
 			 	</p>
 			 	<tr align="center">

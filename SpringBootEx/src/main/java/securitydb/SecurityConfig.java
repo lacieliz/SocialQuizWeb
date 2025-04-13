@@ -48,7 +48,8 @@ public class SecurityConfig {
 		).authorizeHttpRequests(
 			authz -> authz.requestMatchers("/fail", "/signup/**","/home/**", 
 					"/login/**", "/logon/**", "/input/**", "/security/**", 
-					"main", "/sendmail/**", "/sendmailcheck", "/mail/**").permitAll()
+					"main", "/sendmail/**", "/sendmailcheck", "/mail/**",
+					"/findid", "findpwd").permitAll()
 					.requestMatchers( "/member/**").hasRole( "MEMBER" )
 					.requestMatchers( "/admin/**" ).hasRole( "ADMIN" )
 					.anyRequest().authenticated()
@@ -62,8 +63,8 @@ public class SecurityConfig {
 			    .successHandler(new SetLoginPage())
 		).logout(
 			f -> f.logoutUrl( "/logout" )
-				.invalidateHttpSession( true )				// 세션무효화
-				.deleteCookies( "JSESSIONID" )				// 쿠키 삭제
+				.invalidateHttpSession( true )				
+				.deleteCookies( "JSESSIONID")			
 				.logoutSuccessUrl( "/logon" )
 		);
 		

@@ -7,10 +7,10 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan( basePackages={"login","admin", "mb", "logon", "board","qna","control.", 
-		"websocket", "securitydb","game","rank" ,"mail"} )
+		"websocket", "securitydb","game.","rank" ,"mail"} )
 
 @MapperScan( basePackages= {"login", "admin", "logon", "board", "qna", "quiz.oxgame",
-		"quiz.wordGame", "securitydb", "game","rank", "mail"} )
+		"quiz.wordGame", "securitydb", "game.","rank", "mail"} )
 
 public class SecurityApplication {
 	public static void main(String[] args) {

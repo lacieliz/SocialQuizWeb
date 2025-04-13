@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="setting.jsp" %>
+<%@ include file="../setting.jsp" %>
 <link rel="stylesheet" href="${project}findform.css">
 
 <h2 class="form_title">비밀번호 찾기</h2>
@@ -10,7 +10,7 @@
     <input type="text" name="emailAuth" placeholder="Email Auth" class="input" />
    
     <input type="button" id="emailAuthBtn" value="이메일 인증하기" class="inputbutton" onclick="sendEmailAuthCode()"/>
-    <input type="button" value="로그인으로 돌아가기" class="inputbutton" onclick="location.href='logonlogin'" />
+    <input type="button" value="로그인으로 돌아가기" class="inputbutton" onclick="location.href='logon'" />
 </form>
 
 <script>
