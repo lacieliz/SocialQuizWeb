@@ -1,4 +1,4 @@
-package control.logon;
+package securitydb;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

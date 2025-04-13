@@ -3,24 +3,17 @@ package securitydb;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import jakarta.annotation.Resource;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import logon.LogonDBBean;
 import mb.CreateBeans;
 @Controller
 @RequestMapping( "/logon" )
 public class LogonController {
 	
-	 private final CreateBeans createBeans;
-		@Resource
-		private LogonDBBean logonDao;
+	    private final CreateBeans createBeans;
 
 		LogonController(CreateBeans createBeans) {
 	        this.createBeans = createBeans;

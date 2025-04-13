@@ -1,8 +1,5 @@
 package securitydb;
 
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,15 +14,13 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping( "/deleteuser" )
 public class UserDeleteController {
 
-    private final PasswordEncoder passwordEncoder;
     private final CustomUserDetailsService customUserDetailsService;
     
 	@Resource
 	private UserMapper userMapper;
 
-    UserDeleteController(CustomUserDetailsService customUserDetailsService, PasswordEncoder passwordEncoder) {
+    UserDeleteController(CustomUserDetailsService customUserDetailsService) {
         this.customUserDetailsService = customUserDetailsService;
-        this.passwordEncoder = passwordEncoder;
     }
 	
 	@GetMapping
