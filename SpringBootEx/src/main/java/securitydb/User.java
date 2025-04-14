@@ -13,7 +13,7 @@ public class User {
 	private String nickname;
 	private String auth;
 	private String email;
-	private Timestamp createdAt;
-	private Timestamp deletedAt;
+	private Timestamp created_at;
+	private Timestamp deleted_at;
 	private char blockId;
 }

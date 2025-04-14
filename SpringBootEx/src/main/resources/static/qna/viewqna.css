@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+/* QnA 리스트 공통 스타일 */
+h2 {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+table {
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-size: 16px;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+th, td {
+  border: 1px solid #dee2e6;
+  padding: 12px;
+}
+
+th {
+  background-color: #f8f9fa;
+  text-align: center;
+  font-weight: bold;
+}
+
+td a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-container input[type="text"] {
+  padding: 8px;
+  width: 300px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.search-container button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.search-container button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+}
+
+.search-container .button {
+  background-color: #6c757d;
+  color: white;
+}
+
+.search-container button:hover {
+  opacity: 0.9;
+}
+
+.center-content {
+  text-align: center;
+}
+
+center {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+center a {
+  margin: 0 6px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+center a:hover {
+  text-decoration: underline;
+}
+
+/* 버튼 공통 스타일 */
+.inputbutton {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.inputbutton:hover {
+    opacity: 0.9;
+}
+

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="setting.jsp" %>
-<link rel="stylesheet" type="text/css" href="${project}style_qna.css">
-<script type="text/javascript" src="${project}script_qna.js"></script>
+	<%@ include file="../setting.jsp" %>
+<link rel="stylesheet" type="text/css" href="${qna}style_qna.css">
+<script type="text/javascript" src="${qna}script_qna.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 

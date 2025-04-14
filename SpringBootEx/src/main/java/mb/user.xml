@@ -10,11 +10,21 @@
         INSERT INTO members (userId, passwd, nickname, auth, email, created_at, deleted_at, block_id)
 		VALUES (#{userId}, #{passwd}, #{nickname}, 'ROLE_MEMBER', #{email}, sysdate , null, '0')
     </insert>
+     	<select id="check" parameterType="String" resultType="int">
+ 		select count(*) from members where userId=#{userId}
+ 	</select>
     
     <select id="findId" parameterType="String" resultType="String">
  		select userId from members where email = #{email}	
  	</select>
-    
+    <select id="findPasswd" parameterType="String" resultType="String">
+ 		select passwd from members where userId = #{userId}	
+ 	</select>
+ 	
+	<update id="changePasswd" parameterType="logon.LogonDataBean">
+ 		update members set passwd=#{passwd}
+ 		where userId=#{userId}
+ 	</update>
     <!--Check SQL-->
  	<select id="checkId" parameterType="String" resultType="int">
  		select count(*) from members where userId=#{userId}
@@ -32,5 +42,12 @@
  	 	<delete id="deleteUser" parameterType="String">
  		delete from members where userId=#{userId}
  	</delete>
+ 
+ 	
+ 	<update id="modifyMember" parameterType="securitydb.User">
+ 		update members set passwd=#{passwd}, 
+ 		email=#{email, jdbcType=VARCHAR}
+ 		where userId=#{userId}
+ 	</update>
 </mapper>
 

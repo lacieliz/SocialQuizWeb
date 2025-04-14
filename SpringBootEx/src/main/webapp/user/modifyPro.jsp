@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../setting.jsp"%>
-<script type="text/javascript" src="${project}script_member.js"></script>  
+<script type="text/javascript" src="${logon}script_member.js"></script>  
 
-<h2> ${page_modify} </h2>
+<h2> ${logon_modify} </h2>
 
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
 		alert( error_modify );
 	</script>	
-	<meta http-equiv="refresh" content="0; url=logonmain">
+	<meta http-equiv="refresh" content="0; url=home">
 </c:if>
 <c:if test="${result eq 1}">	
-	<c:redirect url="logonmain"/>	
+	<c:redirect url="home"/>	
 </c:if>
 
 

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<%@ include file="../setting.jsp"%>
-<link type="text/css" rel="stylesheet" href="${project}loginform.css">
-<script type="text/javascript" src="${project}script_member.js"></script>    
+<link type="text/css" rel="stylesheet" href="${logon}loginform.css">
+<script type="text/javascript" src="${logon}script_member.js"></script>    
 
 <h2> ${page_login} </h2>
 		 <br>

@@ -8,4 +8,8 @@ public interface LogonMapper {
 	public int modifyMember( LogonDataBean memberDto );
 	public String findPasswd(String userId);
 	public int changePasswd(LogonDataBean logonDto);
+	public int check( String userId );
+	public int check( String userId, String passwd );
+	
+	
 }

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../setting.jsp"%>
-<link type="text/css" rel="stylesheet" href="${project}inputform.css">
-<script type="text/javascript" src="${project}script_member.js"></script>    
+<link type="text/css" rel="stylesheet" href="${logon}inputform.css">
+<script type="text/javascript" src="${logon}script_member.js"></script>    
 
 
 <form class="form" method="post" name ="inputform" action="/signup">

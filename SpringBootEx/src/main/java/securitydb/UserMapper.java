@@ -1,6 +1,9 @@
 package securitydb;
 
 import org.apache.ibatis.annotations.Mapper;
+
+import logon.LogonDataBean;
+
 import java.util.Optional;
 @Mapper
 public interface UserMapper {    
@@ -15,5 +18,6 @@ public interface UserMapper {
 
 	String findId(String email);
 	int deleteUser(String id);
+	public int modifyMember( User user );
 }
 

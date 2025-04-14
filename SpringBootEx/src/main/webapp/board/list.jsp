@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="setting.jsp" %>
+	<%@ include file="../setting.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<link rel="stylesheet" type="text/css" href="${project}style_board.css">
-<script type="text/javascript" src="${project}script_board.js"></script>
+<link rel="stylesheet" type="text/css" href="${board}style_board.css">
+<script type="text/javascript" src="${board}script_board.js"></script>
 
 <h2>공지사항</h2>
 <br>
@@ -16,7 +16,7 @@
 				<input type="text" name="query" placeholder="검색어를 입력해주세요" style="width:40%" required>
 				<button type="submit">검색</button>
 				<button class="button" onclick="location.href='boardwrite'">${str_write}</button>
-				<button class="button" onclick="location.href='logonmain'">메인페이지</button>
+				<button class="button" onclick="location.href='home'">메인페이지</button>
 			</div>
 		</td>
 	</tr>

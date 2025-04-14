@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
     private final UserMapper userMapper;
-
+    private User user;
     public CustomUserDetailsService( UserMapper userMapper) {
         this.userMapper = userMapper;
     }
@@ -18,7 +18,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername( String userId ) throws UsernameNotFoundException {	   
     	
-       	User user = userMapper.findByUserId( userId )
+       	 user = userMapper.findByUserId( userId )
        			.orElseThrow(() -> 
        			new UsernameNotFoundException( "User not found" ));
 
@@ -28,5 +28,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 			Collections.singletonList( new SimpleGrantedAuthority( user.getAuth() ) )
       	);
   	}
+    
+    public User getUser() {
+    	return user;
+    }
     
 }
