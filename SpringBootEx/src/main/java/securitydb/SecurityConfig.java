@@ -49,7 +49,8 @@ public class SecurityConfig {
 			authz -> authz.requestMatchers("/fail", "/signup/**","/home/**", 
 					"/login/**", "/logon/**", "/input/**", "/security/**", 
 					"main", "/sendmail/**", "/sendmailcheck", "/mail/**",
-					"/findid", "/findpwd","/deleteuser","/user/**","/securitydb/**","/modifyuser").permitAll()
+					"/findid", "/findpwd","/deleteuser","/user/**","/securitydb/**","/modifyuser"
+					,"/board/**").permitAll()
 					.requestMatchers( "/member/**").hasRole( "MEMBER" )
 					.requestMatchers( "/admin/**" ).hasRole( "ADMIN" )
 					.anyRequest().authenticated()
