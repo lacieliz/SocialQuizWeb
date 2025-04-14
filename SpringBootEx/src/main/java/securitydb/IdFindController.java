@@ -23,7 +23,8 @@ public class IdFindController {
 	@PostMapping
 	public String findIdPro( @RequestParam String email, Model model ) throws Exception {
 		
-		        String result = userMapper.findId(email);
+		        String userId  = userMapper.findId(email);
+		        String result = userId.substring(0, 2) + "*".repeat(userId.length() - 2);
 		        model.addAttribute("result", result);		 
 		        
 		        return "login/findidPro";

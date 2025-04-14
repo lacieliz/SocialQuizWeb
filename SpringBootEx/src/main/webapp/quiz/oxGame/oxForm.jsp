@@ -12,12 +12,13 @@
 	</head>
 	<body>
 		<input type="hidden" id="userId" value="${memId}" />
-		<div class="quiz-container">
-		    <div class="header-buttons">
+		   <div class="timer">Timer: <span id="timeout"></span></div>
+		 <div class="header-buttons">
 		        <button id="restartBtn">다시하기</button>
 		        <button id="exitBtn" onclick="location='selectquiz'">나가기</button>
 		    </div>
-		    <div class="timer">Timer: <span id="timeout"></span></div>
+		    
+		<div class="quiz-container">
 		    <div class="question"></div>
 		    <div class="options">
 		        <div class="btn_O">O</div>
@@ -25,9 +26,6 @@
 		    </div>
 		    <p id="result"></p>
 		</div>
-		<div class="chatbox">
-		    <p>Guest 1</p>
-		    <p>Guest 2</p>
-		</div>
+		
 </body>
 </html>

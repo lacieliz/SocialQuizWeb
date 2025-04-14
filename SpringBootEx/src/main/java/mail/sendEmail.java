@@ -44,13 +44,15 @@ public class sendEmail {
 	
 	@PostMapping("/sendmail")
 	@ResponseBody
-	public String sendEmailPro( Model model, @RequestParam String email, @RequestParam(required = false) String emailVerified, 
+	public String sendEmailPro( Model model, @RequestParam String email, @RequestParam(required = false) String emailVerified,
 			HttpSession session, HttpServletResponse response) {
 		int checkemail = userMapper.checkEmail(email);
 		
 		if ("false".equals(emailVerified) && checkemail == 1) {
 	        return "duplicate"; // 이메일 중복됨
-	    }
+	    } else if (emailVerified == null && checkemail == 0) {
+	    	return "none";
+	    } else {
 		RandomKey();
 		
 		MimeMessage message = mailSender.createMimeMessage();
@@ -74,6 +76,8 @@ public class sendEmail {
 		session.setAttribute("authKey",key);
         session.setAttribute("email", email);
 		return "success";
+		}
+			
 	}
 	
 	@PostMapping("/sendmailcheck")

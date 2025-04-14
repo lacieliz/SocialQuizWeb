@@ -1,0 +1,136 @@
+@charset "UTF-8";
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .top-right-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+    }
+
+    .top-right-btn a {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .top-right-btn a:hover {
+      background-color: #0056b3;
+    }
+
+    .game-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      margin-bottom: 40px;
+    }
+
+    .word-display, .word-input {
+      width: 500px;
+      height: 300px;
+      font-size: 100px;
+      text-align: center;
+      border: 3px solid #ccc;
+      border-radius: 12px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .definition-box {
+      width: 600px;
+      height: 200px;
+      font-size: 20px;
+      padding: 20px;
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      line-height: 1.5;
+    }
+    
+    .used-words-box {
+	  position: absolute;
+	  top: 100px;
+	  left: 30px;
+	  width: 200px;
+	  padding: 20px;
+	  background-color: #ffffff;
+	  border: 2px solid #ddd;
+	  border-radius: 10px;
+	  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	  font-size: 18px;
+	}
+
+	.timer {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28px;
+  font-weight: bold;
+  background-color: #fff;
+  padding: 12px 24px;
+  border: 3px solid #007bff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  color: #007bff;
+  z-index: 999;
+}
+		
+	.used-words-box h3 {
+	  margin-bottom: 10px;
+	  font-size: 20px;
+	  text-align: center;
+	}
+	.top-right-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      display: flex;
+      gap: 10px;
+    }
+    .top-right-btn a, .top-right-btn button {
+      padding: 8px 12px;
+      font-size: 14px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .top-right-btn a:hover, .top-right-btn button:hover {
+      background-color: #0056b3;
+    }
+	#usedWordsList {
+	  list-style-type: none;
+	  padding-left: 0;
+	}
+	
+	#usedWordsList li {
+	  margin: 5px 0;
+	  text-align: center;
+	}
+	    
