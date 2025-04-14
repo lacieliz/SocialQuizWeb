@@ -9,11 +9,11 @@
 
   <c:if test="${checkPwd eq 1}">
     <form name="modifyform" method="post" action="modifypro">
-      <input type="hidden" name="userId" value="${memberDto.userId}">
+      <input type="hidden" name="userId" value="${User.userId}">
       
       <div class="form-group">
         <label>${str_user_id}</label>
-        <div class="form-value">${memberDto.userId}</div>
+        <div class="form-value">${User.userId}</div>
       </div>
 
       <div class="form-group">
@@ -28,18 +28,18 @@
 
       <div class="form-group">
         <label>${str_nickname}</label>
-        <div class="form-value">${memberDto.nickname}</div>
+        <div class="form-value">${User.nickname}</div>
       </div>
 
       <div class="form-group">
         <label>${str_email}</label>
-        <input class="input" type="text" name="email" maxlength="30" value="${memberDto.email}">
+        <input class="input" type="text" name="email" maxlength="30" value="${User.email}">
       </div>
 
       <div class="form-group">
         <label>${str_created_at}</label>
         <div class="form-value">
-          <fmt:formatDate type="both" value="${memberDto.created_at}" pattern="yyyy-MM-dd HH:mm"/>
+          <fmt:formatDate type="both" value="${User.created_at}" pattern="yyyy-MM-dd HH:mm"/>
         </div>
       </div>
 

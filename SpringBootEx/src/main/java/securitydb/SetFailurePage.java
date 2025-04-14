@@ -22,7 +22,7 @@ public class SetFailurePage {
 
 		model.addAttribute( "result", 0 );				
 
-		return "login/logonPro";
+		return "login/loginPro";
 
 	}
 }

@@ -23,6 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
        			new UsernameNotFoundException( "User not found" ));
 
        	System.out.println("로그인 들어옴"+userId);
+       	System.out.println("[/CustomUserDetail] : " + user.getPasswd());
       	return new org.springframework.security.core.userdetails.User(
        		user.getUserId(), user.getPasswd(),
 			Collections.singletonList( new SimpleGrantedAuthority( user.getAuth() ) )
