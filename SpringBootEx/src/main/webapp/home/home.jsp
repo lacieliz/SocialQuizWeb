@@ -19,16 +19,16 @@
 		<div class="div2">
 		<a href="quiz/selectquiz" >추천게임 </a>
 		<a href="/quiz/startox" class="game-card">
-		  <img src="/images/ox-icon.png" alt="OX 게임" class="icon-img">
+		  <img src="/images/oxbutton.png" alt="OX 게임" class="icon-img">
 		  <span class="game-title">OX게임</span>
 		</a>
 
 		<a href="/quiz/startword" class="game-card">
-		  <img src="/images/word-icon.png" alt="끝말잇기" class="icon-img">
+		  <img src="/images/wordbutton.png" alt="끝말잇기" class="icon-img">
 		  <span class="game-title">끝말잇기</span>
 		</a>
 		<a href="/quiz/startliar" class="game-card">
-		  <img src="/images/liar-icon.png" alt="라이어게임" class="icon-img">
+		  <img src="/images/liarbutton.png" alt="라이어게임" class="icon-img">
 		  <span class="game-title">라이어게임</span>
 		</a>
 		</div>

@@ -36,7 +36,7 @@
 
 <!-- 라이어 게임 -->
 <div class="container mt-3">
-  <div class="position-relative mt-4 p-5 bg-primary text-white rounded" onclick="location='apiliar'">
+  <div class="position-relative mt-4 p-5 bg-primary text-white rounded">
     <a href="#" class="btn btn-sm btn-light position-absolute top-0 end-0 m-2"
        onclick="event.stopPropagation()">ⓘ</a>
     <h2>라이어 게임</h2>
@@ -46,7 +46,7 @@
 
 <!-- 행맨 게임 -->
 <div class="container mt-3">
-  <div class="position-relative mt-4 p-5 bg-primary text-white rounded" onclick="location='starthangman'">
+  <div class="position-relative mt-4 p-5 bg-primary text-white rounded">
     <a href="#" class="btn btn-sm btn-light position-absolute top-0 end-0 m-2"
 	       onclick="event.stopPropagation()">ⓘ</a>
     <h2>행맨 게임</h2>
