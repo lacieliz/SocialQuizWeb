@@ -8,7 +8,7 @@
     </select>
     <insert id="insertUser" parameterType="securitydb.User">
         INSERT INTO members (userId, passwd, nickname, auth, email, created_at, deleted_at, block_id)
-		VALUES (#{userId}, #{passwd}, #{nickname}, 'ROLE_ADMIN', #{email}, sysdate , null, '0')
+		VALUES (#{userId}, #{passwd}, #{nickname}, 'ROLE_MEMBER', #{email}, sysdate , null, '0')
     </insert>
     <select id="check" parameterType="String" resultType="int">
  		select count(*) from members where userId=#{userId}

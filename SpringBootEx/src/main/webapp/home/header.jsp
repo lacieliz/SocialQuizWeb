@@ -21,12 +21,12 @@
 		    </div>
 		    
 		    	<ul class="nav-menu">
-			      <li class="nav-item"><a class="nav-link active" href="admin">관리자 홈</a></li>
-			      <li class="nav-item"><a class="nav-link" href="setoxgame">O/X게임 문제 설정</a></li>
-			      <li class="nav-item"><a class="nav-link" href="rank">랭킹</a></li>
-			      <li class="nav-item"><a class="nav-link" href="qnalist">문의게시판</a></li>
-			      <li class="nav-item"><a class="nav-link" href="boardlist">공지사항</a></li>
-			      <li class="nav-item"><a class="nav-link" href="socketword">접속자 조회</a></li>
+			      <li class="nav-item"><a class="nav-link active" href="/home">홈</a></li>
+			      <li class="nav-item"><a class="nav-link" href="/quiz/startox">O/X게임</a></li>
+			      <li class="nav-item"><a class="nav-link" href="/quiz/startword">끝말잇기</a></li>
+			      <li class="nav-item"><a class="nav-link" href="/rank">랭킹</a></li>
+			      <li class="nav-item"><a class="nav-link" href="/game_record/game_record">게임전적</a></li>
+			      <li class="nav-item"><a class="nav-link" href="#">채팅창</a></li>
 			    </ul>
 		    
 			<div class="header-buttons">
