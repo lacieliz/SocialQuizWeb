@@ -7,9 +7,9 @@ import lombok.Setter;
 @Setter
 public class SetOxBean {
 	
-	private String quiz_id;
-	private String game_id;
-	private String category_id;
+	private int quiz_id;
+	private int game_id;
+	private int category_id;
 	private String question;
 	private String answer;
 	private int quiz_score;

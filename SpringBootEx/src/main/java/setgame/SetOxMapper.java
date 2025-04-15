@@ -10,6 +10,9 @@ public interface SetOxMapper {
 	
 	public List<SetOxBean> getOxList(Map<String, Integer> map);
 	public int getCount();
+	public int deleteOxList();
+	public int insertOxList(SetOxBean s);
+	public int resetSEQ();
 	//public List<SetOxBean> getOxList();
 
 }
