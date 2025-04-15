@@ -89,6 +89,11 @@
 <c:set var="qna_msg_passwd" value="비밀번호를 입력해주세요"/>
 <c:set var="qna_msg_modify" value="수정할 정보를 입력하세요"/>
 
+<!--quiz-->
+<c:set var="quiz" value="/quiz/"/>
+<c:set var="quiz_main" value ="게임 선택 페이지"/>
+<c:set var="page_rank" value =" 랭 크 "/>
+<c:set var="err_input" value = "DB 저장 안됨"/>
 
     
     

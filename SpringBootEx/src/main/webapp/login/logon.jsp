@@ -4,68 +4,45 @@
 <link type="text/css" rel="stylesheet" href="${logon}loginform.css">
 <script type="text/javascript" src="${logon}script_member.js"></script>    
 
-<h2> ${page_login} </h2>
-		 <br>
-	<div>
+<%@ include file="/home/header.jsp" %>
+
+<div id="main">
+<div class="login-container">
+	<div class="signup-box">
+		<h2> 아직,<br>게임 회원이<br>아니신가요?</h2>
+		 <p>회원가입하고<br>퀴즈 랭킹에 도전해 보세요!</p>
+      <button class="signup-button" onclick="location='/signup'">회원가입</button>
+      <button class="signup-button" onclick="location='/home'">${btn_main}</button>
+	</div>
+	
+	<div class="login-box">
 		<form name="loginform" method="post" action="/logon">
-			<table>
-				<tr>
-					<td> <input class="input" type="text" name="userId" 
-					placeholder="ID" value="${rememberedId}" maxlength="15" autofocus> </td>
-				</tr>
-				<tr>
-					<td> <input class="input" type="password" name="passwd" 
-					placeholder="Password" maxlength="20"> </td>
-				</tr>
-			</table> 
-		 <div>
-		 	<table>
-				<tr>	
-					<td>
-					  <label>
-					    <input type="checkbox" name="rememberId" 
-					      <c:if test="${not empty rememberedId}">checked</c:if> /> 아이디 저장
-					  </label>
-					</td>
-
-			 	</tr>
-			</table>
-		</div>
-			 	<p>
-			 		<tr align="center">
-			 			<td> 
-			 				<input class="inputbutton" type="submit" value="${btn_login}">
-			 			</td>
-			 		</tr>
-			 	</p>
-		 		
-			 	<p>
-			 		<tr align="center">
-			 			<a href="/findid" class="no-underline">아이디 찾기 </a> 
-			 			<a href="/findpwd" class="no-underline"> 비밀번호 찾기 </a>
-			 		</tr>
-			 	</p>
-			 	<tr align="center">
-			 		<td td colspan="2"> 과일 Quiz에 처음 참가하시나요? </td>
-			 	</tr>
-			 	<p>
-		 			<tr align="center">
-			 			<td> 
-			 				<input class="inputbutton" type="button" value="${btn_input}"
-			 				onclick="location='/signup'">
-			 			</td>
-		 		</tr>
-			 	</p>
-			 		<p>
-		 			<tr align="center">
-			 			<td> 
-			 				<input class="inputbutton" type="button" value="${btn_main}"
-			 				onclick="location='/home'">
-			 			</td>
-		 		</tr>
-			 	</p>
-				
-			</table>
-		</form>
-
+			<h2>${page_login}</h2>
+			<input class="input" type="text" name="userId" 
+				placeholder="ID" value="${rememberedId}" maxlength="15" autofocus>
+			<input class="input" type="password" name="passwd" 
+				placeholder="Password" maxlength="20">
+			 <div>
+				<label><input type="checkbox" class="memory" name="rememberId"
+					<c:if test="${not empty rememberedId}">checked</c:if> />아이디 저장</label>
+			</div>
+			<input class="inputbutton" type="submit" value="${btn_login}">
 		
+			<div class="link-row">
+	          <span><a href="/findid" class="no-underline">아이디 찾기</span> | <span><a href="/findpwd" class="no-underline">비밀번호 찾기</span>
+	        </div>
+	
+	        <div class="social-login">
+	          <p>다른 계정으로 로그인</p>
+	          <div class="sns-buttons">
+	            <div class="sns naver">N</div>
+	            <div class="sns kakao">K</div>
+	            <div class="sns google">G</div>
+	          </div>
+	        </div>
+		</form>
+	</div>
+</div>
+</div>
+
+<%@ include file="/home/footer.jsp" %>

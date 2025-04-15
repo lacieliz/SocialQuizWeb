@@ -12,22 +12,11 @@ import rank.RankDBBean;
 
 @Controller
 public class RankController {
-
-    @Autowired
-    private RankDBBean rankService;
-
-    @GetMapping("/rank")
+    @GetMapping("/rank/rank")
     public String showRank() {
 
         return "rank/rank";  // 실제로는 /webapp/rank/rank.jsp
     }
-    
-    @GetMapping("/record")
-    public String showrecord() {
-
-        return "rank/myrecord";  // 실제로는 /webapp/rank/rank.jsp
-    }
-    
 
 }
 

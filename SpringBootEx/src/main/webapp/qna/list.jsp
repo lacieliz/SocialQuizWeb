@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<%@ include file="../setting.jsp" %>
+<%@ include file="setting.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" type="text/css" href="${qna}style_qna.css">
@@ -13,8 +13,16 @@
 	<tr>
 		<td colspan="5" class="input center-content"> 
 			<div class="search-container">
+			<c:if test="${memId eq 'sera '}">
+				<input type="text" name="query" placeholder="검색어를 입력해주세요" style="width:40%" required>
+				<button type="submit">답변 필요한 글</button>
+				<button class="button" onclick="location.href='boardwrite'">답변 작성</button>
+			</c:if>
+			<c:if test="${memId ne 'sera'}">
 				<input type="text" name="query" placeholder="검색어를 입력해주세요" style="width:40%" required>
 				<button type="submit">검색</button>
+				<button class="button" onclick="location.href='boardwrite'">${str_write}</button>
+			</c:if>
 				<button class="button" onclick="location.href='home'">메인페이지</button>
 			</div>
 		</td>
@@ -28,7 +36,7 @@
 
 	<c:if test="${count eq 0}">
 		<tr>
-			<td colspan="5" style="text-align: center;">${qna_msg_list}</td>
+			<td colspan="5" style="text-align: center;">${msg_list_x}</td>
 		</tr>
 	</c:if>
 

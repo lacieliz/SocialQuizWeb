@@ -1,69 +1,98 @@
 @charset "UTF-8";
 
-div{
-	text-align: center;
+#main {
+	padding-top: 60px;
+    padding-bottom: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #f5f8fc;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
-p{
-	
-}
-body{
-  margin: 0 auto;
-  width: 600px;
-  padding: 40px;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 20px 20px rgba(0, 0, 0, .1), 0 0 50px rgba(0, 0, 0, .1);
+.login-container {
+    display: flex;
+    flex-direction: row;	/* 반응형 디자인 */
+    width: 800px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
 
-.form{
-  width: 380px;
-  padding: 40px;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 20px 20px rgba(0, 0, 0, .1), 0 0 50px rgba(0, 0, 0, .1);
+/* 왼쪽 박스 */
+.signup-box {
+    flex: 1;
+    background-color: #e5f1fb;
+    padding: 40px;
+    text-align: center;
 }
 
-.form_title{
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
+.signup-box h2 {
+    font-size: 24px;
+    color: #002c5f;
+    margin-bottom: 20px;
+    line-height: 1.5;
 }
 
-
-.input{
-  
-  width: 300%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid black;
-  border-radius: 10px;
-  font-size: 14px;
+.signup-box p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 30px;
 }
 
-.input:focus{
-  outline: none;
-  border: 2px solid black;
+.signup-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: white;
+    color: #002c5f;
+    border: 2px solid #002c5f;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-.inputbutton{
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  color: white;
-  background: rgb(0, 128, 255);
-  cursor: pointer;
-  transition: background .3s ease;
+.signup-button:hover {
+    background-color: #002c5f;
+    color: white;
 }
 
-.inputbutton:hover{	
-   border: 1px solid black;
+/* 오른쪽 로그인 박스 */
+.login-box {
+    flex: 1;
+    padding: 40px;
 }
 
+.login-box h2 {
+	 color: #002c5f;
+}
+
+.input, .inputbutton {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.input {
+    border: 1px solid #ccc;
+}
+
+.inputbutton {
+    background-color: #55b7e6;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.inputbutton:hover {
+    background-color: #269ed9;
+}
+
+/*
 .inputbutton[value = "Sign in"]{	
   background: rgb(255, 128, 128);
 }
@@ -71,7 +100,105 @@ body{
 .inputbutton[value = "Sign in"]:hover{
    border: 1px solid black;
 }
-.no-underline {
-    text-decoration: none;
-    color: inherit; /* 링크 색도 기본 텍스트 색으로 */
+*/
+
+/* 아이디 저장 */
+.memory {
+    margin-right: 6px;
+    margin-bottom: 13px;
+}
+
+.link-row {
+    text-align: center;
+    color: #0078d4;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.link-row span {
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.link-row span:hover {
+    text-decoration: underline;
+}
+
+/* 소셜로그인 */
+.social-login {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-login p {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.sns-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sns {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ddd;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sns.naver { background-color: #1ec800; }
+.sns.kakao { background-color: #ffe812; color: #3c1e1e; }
+.sns.google { background-color: #db4437; }
+
+/* 반응형 디자인 - 모바일 대응 */
+@media screen and (max-width: 768px) {
+    .login-container {
+        flex-direction: column;   /* 위아래 정렬 */
+        width: 90%;               /* 모바일 너비에 맞게 */
+    }
+
+    .signup-box {
+        order: 2;                /* 아래로 */
+        text-align: center;
+    }
+
+    .login-box {
+        order: 1;                /* 위로 */
+        text-align: center;
+    }
+
+    .signup-button, .inputbutton, .input {
+        width: 100%;             /* 버튼, 인풋 전부 가득 차게 */
+    }
+
+    .sns-buttons {
+        flex-wrap: wrap;         /* SNS 버튼 2줄 가능 */
+        gap: 12px;
+    }
+
+    .sns {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .link-row {
+        font-size: 13px;
+    }
+
+    .signup-box h2 {
+        font-size: 20px;
+    }
+
+    .signup-box p {
+        font-size: 14px;
+    }
 }

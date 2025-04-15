@@ -37,8 +37,10 @@ public class SecurityConfig {
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() {
 		return web -> web.ignoring()
-				.requestMatchers("/static/board/**", "/static/logon/**", "/resources/**");
-	}
+				.requestMatchers("/static/board/**", "/static/logon/**", "/static/qna/**",
+						"/static/quiz/**","/static/rank/**","/static/images/**", 
+						"/resources/**");
+		}
 	
 	@Bean
 	public SecurityFilterChain filterChain( HttpSecurity http ) throws Exception {		

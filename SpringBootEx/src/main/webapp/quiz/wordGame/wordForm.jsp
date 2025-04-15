@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../setting.jsp" %>
-<link type="text/css" rel="stylesheet" href="${project}wordgame.css">
-<script type="text/javascript" src="${project}wordquiz.js"></script>   
+<link type="text/css" rel="stylesheet" href="${quiz}wordgame.css">
+<script type="text/javascript" src="${quiz}wordquiz.js"></script>   
 
 <!DOCTYPE html>
 <html>

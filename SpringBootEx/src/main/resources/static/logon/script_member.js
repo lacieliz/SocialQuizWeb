@@ -11,8 +11,8 @@ let msg_confirm_email_auth = "이메일 인증을 완료해주세요.";
 let msg_email_change = "비밀번호가 성공적으로 변경되었습니다.";
 
 let error_input = "회원가입에 실패했습니다.\n잠시 후 다시 시도하세요";
-let error_user_id = "입력하신 아이디가 없습니다.\n다시 확인하세요.";
-let error_passwd = "입력하신 비밀번호가 다릅니다.\n다시 확인하세요.";
+let error_login = "입력하신 아이디 또는 비밀번호가 일치하지 않습니다.\n다시 확인하세요.";
+let error_passwd = "비밀번호가 일치하지 않습니다.\n다시 입력하세요.";
 let error_delete = "회원탈퇴에 실패했습니다.\n잠시 후 다시 시도하세요";
 let error_modify = "회원정보수정에 실패했습니다.\n잠시 후 다시 시도하세요";
 let error_id_incorrect =  "아이디가 일치하지 않습니다. \n다시 확인해주세요.";
@@ -181,6 +181,7 @@ function sendEmailAuthCode() {
     const email = form['email'].value.trim();
     const authInput = form['emailAuth']?.value?.trim(); // 인증번호 입력 필드가 있을 경우
 
+	alert(email);
     if (!email) {
         alert('이메일을 입력해주세요!');
         return;

@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../setting.jsp"%>
-<script type="text/javascript" src="${project}script_member.js">
+<script type="text/javascript" src="${logon}script_member.js">
 
 </script>    
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="${project}main.css">
+	<link rel="stylesheet" type="text/css" href="${logon}loginform.css">
 	</head>
 
 	<body>
@@ -35,7 +35,7 @@
 			        </li>
 	       </ul>
 	      <a class="navbar-brand" href="#">	      
-		  	<img src="${project}images/socialQuiz.png" alt="img" class="center-img">
+		  	<img src="${logon}images/socialQuiz.png" alt="img" class="center-img">
 		  </a>
 
 	    </div>
@@ -64,7 +64,7 @@
 	<div class="container">
 		<div class="div1"> </div>
 
-		<img src="${project}images/teamFruit.jpg" alt="img" class="image" >
+		<img src="${logon}images/teamFruit.jpg" alt="img" class="image" >
 		<div class="div3"> 
 			<h1 class="home"> 실시간 순위 </h1>  			           
 		</div>	
