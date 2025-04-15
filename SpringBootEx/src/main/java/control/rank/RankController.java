@@ -12,7 +12,7 @@ import rank.RankDBBean;
 
 @Controller
 public class RankController {
-    @GetMapping("/rank/rank")
+    @GetMapping("/rank")
     public String showRank() {
 
         return "rank/rank";  // 실제로는 /webapp/rank/rank.jsp

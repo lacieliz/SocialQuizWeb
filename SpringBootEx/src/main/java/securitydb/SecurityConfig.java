@@ -38,7 +38,7 @@ public class SecurityConfig {
 	public WebSecurityCustomizer webSecurityCustomizer() {
 		return web -> web.ignoring()
 				.requestMatchers("/static/board/**", "/static/logon/**", "/static/qna/**",
-						"/static/quiz/**","/static/rank/**","/static/images/**", 
+						"/static/quiz/**","/static/rank/**","/images/**", 
 						"/resources/**");
 		}
 	
@@ -52,7 +52,7 @@ public class SecurityConfig {
 					"/login/**", "/logon/**", "/input/**", "/security/**", 
 					"main", "/sendmail/**", "/sendmailcheck", "/mail/**",
 					"/findid", "/findpwd","/deleteuser","/user/**","/securitydb/**",
-					"/modifyuser","/board/**","/setgame/**").permitAll()
+					"/modifyuser","/board/**","/setgame/**","/rank").permitAll()
 					.requestMatchers( "/member/**").hasRole( "MEMBER" )
 					.requestMatchers( "/admin/**" ).hasRole( "ADMIN" )
 					.anyRequest().authenticated()
