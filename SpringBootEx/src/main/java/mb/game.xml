@@ -5,7 +5,7 @@
  <mapper namespace="setgame.SetOxMapper">
 
  	<select id="getOxList" parameterType="java.util.Map" resultType="setgame.SetOxBean">
-		SELECT * FROM quizzes
+		SELECT * FROM quizzes order by quiz_id
 	</select>
 	
 	<select id="getCount" parameterType="java.util.Map" resultType="int">
@@ -21,7 +21,4 @@
 	    delete from quizzes
 	</delete>
 	
-	<alter id="resetSEQ" parameterType="java.util.Map">
-        ALTER SEQUENCE SEQ_QUIZZES RESTART START WITH 1
-	</alter>
- </mapper>
+	 </mapper>
