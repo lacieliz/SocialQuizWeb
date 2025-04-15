@@ -29,7 +29,7 @@
 			<input class="inputbutton" type="submit" value="${btn_login}">
 		
 			<div class="link-row">
-	          <span><a href="/findid" class="no-underline">아이디 찾기</span> | <span><a href="/findpwd" class="no-underline">비밀번호 찾기</span>
+	          <span><a href="/findid" class="text-decoration-none">아이디 찾기</span> | <span><a href="/findpwd" class="text-decoration-none">비밀번호 찾기</span>
 	        </div>
 	
 	        <div class="social-login">
