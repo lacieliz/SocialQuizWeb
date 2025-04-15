@@ -29,10 +29,10 @@ public class HomeController {
 		if(memId == "anonymousUser")
 			memId = null;
 		
-		String nickname = customUserDetailsService.getUser().getNickname();
-		
+		//String nickname = customUserDetailsService.getUser().getNickname();
+		String auth = customUserDetailsService.getUser().getAuth();
 		session.setAttribute("memId", memId);
-		session.setAttribute("ninkName", nickname );
+		session.setAttribute("Auth", auth );
 
 		return "home/home";
 	}	
