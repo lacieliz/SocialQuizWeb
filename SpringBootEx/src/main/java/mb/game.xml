@@ -2,15 +2,14 @@
 <!DOCTYPE mapper
   	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="game.OxMapper">
- 
- 	<select id="getOxQuiz" resultType="game.OxDataBean">
- 		SELECT question, answer FROM quizzes
- 	</select>
- 
- 	<insert id="submitScore" parameterType="game.OxDataBean">
- 		INSERT INTO game_records ( game_id, userId, record_time, game_score ) 
- 		VALUES ( #{game_id}, #{userId}, #{record_time}, #{game_score} )
- 	</insert>
- 	
+ <mapper namespace="setgame.SetOxMapper">
+
+ 	<select id="getOxList" parameterType="java.util.Map" resultType="setgame.SetOxBean">
+		SELECT * FROM quizzes
+	</select>
+	
+	<select id="getCount" parameterType="java.util.Map" resultType="int">
+	select count(*) from quizzes
+	</select>
+
  </mapper>
