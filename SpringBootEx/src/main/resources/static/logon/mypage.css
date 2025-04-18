@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/* style.css */
+
+.container-flex {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 280px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 30px;
+}
+
+.nav-link {
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #0056b3;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}

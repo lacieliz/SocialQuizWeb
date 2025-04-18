@@ -1,0 +1,97 @@
+@charset "UTF-8";/* qnaform.css */
+
+/* 기본 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 바탕 설정 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* 네비게이션 바 스타일 */
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 20px;
+}
+
+.navbar .nav-title {
+    font-size: 1.2rem;
+}
+
+/* 메인 컨테이너 */
+.qna-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.qna-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* 폼 스타일 */
+.qna-form .form-group {
+    margin-bottom: 20px;
+}
+
+.qna-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.qna-form input[type="text"],
+.qna-form textarea,
+.qna-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.qna-form textarea {
+    resize: none;
+}
+
+.char-counter {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 5px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color:  #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+}
