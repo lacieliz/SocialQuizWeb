@@ -20,13 +20,12 @@
 		      <span class="logo-text">SQW</span>
 		    </div>
 		    
-		    	<ul class="nav-menu">
+			    <ul class="nav-menu">
 			      <li class="nav-item"><a class="nav-link active" href="/home">홈</a></li>
 			      <li class="nav-item"><a class="nav-link" href="/quiz/startox">O/X게임</a></li>
 			      <li class="nav-item"><a class="nav-link" href="/quiz/startword">끝말잇기</a></li>
 			      <li class="nav-item"><a class="nav-link" href="/rank">랭킹</a></li>
 			      <li class="nav-item"><a class="nav-link" href="/game_record/game_record">게임전적</a></li>
-			      <li class="nav-item"><a class="nav-link" href="#">채팅창</a></li>
 			    </ul>
 		    
 			<div class="header-buttons">

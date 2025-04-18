@@ -131,7 +131,7 @@
         if (con != null) con.close();
     }
 %>
+</div>
 <%@ include file="../home/footer.jsp" %>
-
 </body>
 </html>

@@ -14,7 +14,13 @@
 	<%@ include file="header.jsp" %>
 
 	<div class="container">
-		<div class="div1">Welcome to Social Quiz!</div>
+		<div class="div1">
+			<c:if test="${not empty sessionScope.nickname}">
+				<div class="nickname-msg">${sessionScope.nickname}님 안녕하세요 👋</div>
+			</c:if>
+			Welcome to Social Quiz!
+		</div>
+
 
 		<div class="div2">
 		<a href="quiz/selectquiz" >추천게임 </a>
@@ -27,14 +33,14 @@
 		  <img src="/images/wordbutton.png" alt="끝말잇기" class="icon-img">
 		  <span class="game-title">끝말잇기</span>
 		</a>
-		<a href="/quiz/startliar" class="game-card">
+		<a href="/socketword" class="game-card">
 		  <img src="/images/liarbutton.png" alt="라이어게임" class="icon-img">
 		  <span class="game-title">라이어게임</span>
 		</a>
 		</div>
 		
 		<div class="div3"> 
-			<a href="/rank/rank">
+			<a href="/rank">
 			<span > 실시간 순위 </span>
 			</a>
 		    <jsp:include page="rankView.jsp" flush="true" />		           
@@ -67,10 +73,10 @@
    			 <jsp:include page="noticeMini.jsp" flush="true" />
 		</div>
 		<div class="div6">
-			<a href="qnalist">
+			<a href="qnamylist">
 				<span > 1대1 게시판 </span>
 			</a>
-			<!-- 1대1무의 목록 JSP 삽입 -->
+			<!-- 1대1문의 목록 JSP 삽입 -->
    			 <jsp:include page="qnaMini.jsp" flush="true" />
 		</div>
 		<div class="div7">

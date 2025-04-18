@@ -24,7 +24,11 @@ public class IdFindController {
 	public String findIdPro( @RequestParam String email, Model model ) throws Exception {
 		
 		        String userId  = userMapper.findId(email);
-		        String result = userId.substring(0, 2) + "*".repeat(userId.length() - 2);
+	        	String result = null;
+		        if (userId == null) {
+		        } else {
+		       result = userId.substring(0, 2) + "*".repeat(userId.length() - 2);
+		        }
 		        model.addAttribute("result", result);		 
 		        
 		        return "login/findidPro";

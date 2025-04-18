@@ -1,0 +1,95 @@
+@charset "UTF-8";
+/* style_qna.css */
+
+body {
+    font-family: 'Pretendard Variable', sans-serif;
+    background-color: #f9fbfc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 28px;
+    color: #007bff;
+}
+
+form {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 30px 40px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding: 12px;
+    font-weight: bold;
+    color: #555;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    vertical-align: middle;
+}
+
+td {
+    padding: 12px;
+    vertical-align: middle;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.inputbutton {
+    padding: 10px 20px;
+    margin: 6px 4px;
+    font-size: 14px;
+    border: none;
+    border-radius: 10px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.inputbutton:hover {
+    background-color: #0056b3;
+}
+
+th[colspan="2"] {
+    text-align: center;
+    background-color: transparent;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}

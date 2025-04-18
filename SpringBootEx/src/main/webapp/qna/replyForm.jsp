@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<%@ include file="../setting.jsp" %>
-<link rel="stylesheet" type="text/css" href="${qna}style_qna.css">
+<link rel="stylesheet" type="text/css" href="${qna}replyform.css">
 <script type="text/javascript" src="${qna}script_qna.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -11,11 +11,12 @@
 <br>
 
 <form name="writeform" method="post" action="qnawrite">
+	
 	<input type="hidden" name="num" value="${num}">
 	<input type="hidden" name="ref" value="${ref}">
 	<input type="hidden" name="re_step" value="${re_step}">
 	<input type="hidden" name="re_level" value="${re_level}">
-
+	
 	<table>
 		<tr>
 			<th colspan="2" style="text-align: right;">

@@ -6,28 +6,55 @@
 			웹소켓 채팅
 		</title>
 		<style>
-					#chatWindow{border: 1px solid black; width: 270px; height:310px; overflow:scroll; padding:5px;}
-					#chatMessage{width:236px; height:30px;}
-					#sendBtn{height:30px; position:relative; top:2px; left:-2px;}
-					#closeBtn{margin-bottom:3px; position:relative; top:2px; left:-2px;}
-					#chatId{width:158px; height:24px; border:1px solid #AAAAAA; background-color:#EEEEEE;}
-					.myMsg{text-align:right;}
+		  #chatWindow {
+		    border: 1px solid black;
+		    width: 300px;
+		    height: 300px;
+		    overflow-y: scroll;
+		    padding: 10px;
+		    background-color: #fff;
+		  }
+		
+		    .myMsg {
+		    text-align: right;
+		    color: blue;
+		    font-weight: bold;
+		    margin: 5px;
+		  	}
+		
+		  .otherMsg {
+		    text-align: left;
+		    color: black;
+		    margin: 5px;
+			}
 		</style>
 		
 		<script>
-			var webSocket = new WebSocket("ws://localhost:8080/SpringBootEx/ChatingServer");
-			var chatWindow, chatMessage, chatId;
+			var host = location.hostname;
+			var webSocket = new WebSocket("ws://" + host + ":8080/ChatingServer"); // 192.168.0.84
 			
 			window.onload = function(){
-				chatWindow = document.getElementById("chatWindow");
-				chatMessage = document.getElementById("chatMessage");
-				chatId = document.getElementById("chatId").value;
+				const chatIdInput = document.getElementById("nickname");
+			    if (chatIdInput) {
+			        console.log("nickname 값: " + chatIdInput.value); // 확인 로그
+			    } else {
+			        console.error("❌ nickname input element를 찾을 수 없음!");
+			    }
 			}
 			function sendMessage(){
-				chatWindow.innerHTML +="<div class='myMsg'>" + chatMessage.value + "<div>"
-				webSocket.send(chatId + "|" + chatMessage.value);
-				chatMessage.value = "";
-				chatWindow.scrollTop = chatWindow.scrollHeight;
+				var nickname = document.getElementById("nickname").value || "익명";
+				var chatMessage = document.getElementById("chatMessage");
+				var chatWindow = document.getElementById("chatWindow");
+				
+				const msg = chatMessage.value;
+				if (msg) {
+					chatWindow.innerHTML +="<div class='myMsg'>" + msg + "</div>"
+					webSocket.send( nickname + "|" + msg );
+					msg.value = "";
+					chatMessage.value = "";
+					chatMessage.focus();
+					chatWindow.scrollTop = chatWindow.scrollHeight;
+				}
 			}
 			function disconnect(){
 				webSocket.close();
@@ -37,45 +64,66 @@
 					sendMessage();
 				}
 			}
+			
 			webSocket.onopen = function(event){
-				chatWindow.innerHTML += "웹소켓 서버에 연결되었습니다.<br/>";
-				};
+				const chatWindow = document.getElementById("chatWindow");
+			    const nickname = document.getElementById("nickname").value;
+			    
+				chatWindow.innerHTML += "라이어 게임방에 입장하셨습니다.<br/>";
+				webSocket.send("JOIN|Chat|" + nickname);
+			};
+			
 			webSocket.onclose = function(event){
-				chatWindow.innerHTML += "웹소켓 서버가 종료되었습니다.<br/>";
+				chatWindow.innerHTML += "라이어 게임을 종료합니다.<br/>";
 			};
 			webSocket.onerror = function(event){
 				alert(event.data);
-				chatWindow.innerHTML += "채팅 중 에러가 발생하였습니다.<br/>";
+				chatWindow.innerHTML += "게임 중 에러가 발생하였습니다.<br/>";
 			};
 			
 			webSocket.onmessage = function(event){
-				var message = event.data.split("|");
-				var sender = message[0];
-				var content = message[1];
-				if(content != ""){
-					if(content.match("/")){
-						if(content.match(("/" + chatId))){
-							var temp = content.replace(("/"+chatId), "[귓속말] : ");
-							chatWindow.innerHTML += "<div>" + sender + "" + temp + "</div>";
-						}
-					}
-					else {
-						chatWindow.innerHTML += "<div>" + sender + " : " + content + "</div>";
-					}
-				}
-				chatWindow.scrollTop = chatWindow.scrollHeight;
+			    const chatWindow = document.getElementById("chatWindow");
+			    const nickname = document.getElementById("nickname").value;
+			    
+			    console.log("📩 서버에서 받은 메시지:", event.data);
+
+			    const message = event.data.split("|");
+			    
+			    if (message.length === 1) {
+			        chatWindow.innerHTML += "<div class='otherMsg'>" + message[0] + "</div>";
+			    }
+			    else {
+			        const sender = message[0];
+			        const content = message[1] || "";	// undefined 방지
+				    if (content !== "") {
+				        // 나 자신이면 오른쪽 정렬
+				        if (sender === nickname) {
+				            chatWindow.innerHTML += "<div class='myMsg'>" + content + "</div>";
+				        }
+				        // 귓속말 처리
+				        else if (content.includes("/" + nickname)) {
+				            const temp = content.replace("/" + nickname, "[귓속말] : ");
+				            chatWindow.innerHTML += "<div class='otherMsg'>" + sender + " " + temp + "</div>";
+				        }
+				        // 일반 메시지
+				        else {
+				            chatWindow.innerHTML += "<div class='otherMsg'>" + sender + " : " + content + "</div>";
+				        }
+				    }
+			    }
+
+			    chatWindow.scrollTop = chatWindow.scrollHeight;
 			};
 		</script>
 		
 	</head>
 	<body>
-		대화명 : <input type="text" id="chatId" value="${param.chatId}" readonly/>
+		<h3> 끝말잇기 게임방 </h3>
+		<input type="text" id="nickname" value="${memId}" readonly />
+		<div id="chatWindow" style="border:1px solid #ccc; height:300px; overflow:auto; margin-bottom:10px;"></div>
+		<input type="text" id="chatMessage" onkeyup="enterKey(event);"/>
+		<button id="sendBtn" onclick="sendMessage();">전송</button>
 		<button id="closeBtn" onclick="disconnect();">채팅 종료</button>
-		<div id="chatWindow"></div>
-		<div>
-			<input type="text" id="chatMessage" onkeyup="enterKey();"/>
-			<button id="sendBtn" onclick="sendMessage();">전송</button>
-		</div>
 	</body>
 </html>
 	

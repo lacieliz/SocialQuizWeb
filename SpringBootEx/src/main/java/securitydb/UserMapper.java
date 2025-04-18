@@ -17,6 +17,8 @@ public interface UserMapper {
 	int checkPwd(String userId, String passwd);
 
 	String findId(String email);
+	String findPasswd(String userId);
+	public int changePasswd(User user);
 	int deleteUser(String id);
 	public int modifyMember( User user );
 }

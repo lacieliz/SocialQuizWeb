@@ -14,6 +14,23 @@
 		SELECT COUNT(*) FROM requests
 	</select>
 
+	<select id="getMyCount" parameterType="map" resultType="int">
+		SELECT COUNT(*) FROM requests
+				WHERE ref IN (
+				  SELECT DISTINCT ref
+			  FROM requests
+		  WHERE userId = #{userId})
+	</select>
+
+	<select id="searchMyCount" parameterType="map" resultType="int">
+	 	SELECT COUNT(*) FROM requests
+				WHERE ref IN (
+				  SELECT DISTINCT ref
+			  FROM requests
+		  WHERE userId = #{userId})
+	     AND subject LIKE '%' || #{subject} || '%'
+	</select>
+	
 	<!-- 답글 정렬 처리 -->
 	<update id="addReply" parameterType="qna.QnaDataBean">
 		UPDATE requests SET re_step = re_step + 1
@@ -33,16 +50,21 @@
 	<select id="getArticles" parameterType="java.util.Map" resultType="qna.QnaDataBean">
 		SELECT * FROM (
 			SELECT ROWNUM rnum, A.* FROM (
-				SELECT num, userId, subject, reg_date, ref, re_step, re_level, content
-				FROM requests
-				ORDER BY ref DESC, re_step ASC
+				SELECT 
+					r.num, r.userId, r.subject, r.reg_date, r.ref, r.re_step, r.re_level, r.content,
+					(SELECT COUNT(*) FROM requests 
+					 WHERE ref = r.ref AND re_level > 0) AS replyCount
+				FROM requests r
+				ORDER BY r.ref DESC, r.re_step ASC
 			) A
 			WHERE ROWNUM &lt;= #{end}
 		)
 		WHERE rnum &gt;= #{start}
 	</select>
+
+
 	
-		<select id="getMyArticles" parameterType="java.util.Map" resultType="qna.QnaDataBean">
+		<select id="getMyArticles" parameterType="map" resultType="qna.QnaDataBean">
 		  SELECT * FROM (
 		    SELECT ROWNUM rnum, A.* FROM (
 		      SELECT num, userId, subject, reg_date, ref, re_step, re_level, content
@@ -58,14 +80,31 @@
 		  )
 		  WHERE rnum &gt;= #{start}
 		</select>
-	
+		
+		<select id="searchMyArticles" parameterType="map" resultType="qna.QnaDataBean">
+		  SELECT * FROM (
+		    SELECT ROWNUM rnum, A.* FROM (
+		      SELECT num, userId, subject, reg_date, ref, re_step, re_level, content
+		      FROM requests
+		      WHERE ref IN (
+		        SELECT DISTINCT ref
+		        FROM requests
+		        WHERE userId = #{userId})
+		           AND subject LIKE '%' || #{subject} || '%'
+		      
+		      ORDER BY ref DESC, re_step ASC
+		    ) A
+		    WHERE ROWNUM &lt;= #{end}
+		  )
+		  WHERE rnum &gt;= #{start}
+		</select>
+
 	<!-- 글 상세 보기 -->
 	<select id="getArticle" parameterType="int" resultType="qna.QnaDataBean">
 		SELECT num, userId, subject, reg_date, ref, re_step, re_level, content
 		FROM requests
 		WHERE num = #{num}
 	</select>
-
 
 	<!-- 글 수정 -->
 	<update id="modifyArticle" parameterType="qna.QnaDataBean">

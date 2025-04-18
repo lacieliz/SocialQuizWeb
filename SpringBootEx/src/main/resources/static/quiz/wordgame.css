@@ -133,4 +133,204 @@
 	  margin: 5px 0;
 	  text-align: center;
 	}
-	    
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 350px;
+  margin: 15% auto;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  font-size: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+}
+
+.modal-btn:hover {
+  background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-box {
+  position: absolute;
+  top: 20px;
+  left: 70px;
+  background-color: #fff;
+  color: #28a745;
+  padding: 10px 24px;
+  border: 3px solid #28a745;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  z-index: 999;
+
+  width: 120px;          /* ✅ 고정 너비 설정 */
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+
+.score-box strong {
+  font-size: 28px;
+  color: #28a745;
+}
+@keyframes popScore {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.score-box.animated {
+  animation: popScore 0.4s ease-in-out;
+}
+/* 애니메이션 세기별 */
+@keyframes shake {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-3px, 3px); }
+  50% { transform: translate(3px, -3px); }
+  75% { transform: translate(-3px, 3px); }
+}
+
+@keyframes shake-medium {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-6px, 6px); }
+  50% { transform: translate(6px, -6px); }
+  75% { transform: translate(-6px, 6px); }
+}
+
+@keyframes shake-strong {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-9px, 9px); }
+  50% { transform: translate(9px, -9px); }
+  75% { transform: translate(-9px, 9px); }
+}
+
+/* 흔들림 클래스 */
+.score-box.shake {
+  animation: shake 0.5s ease;
+}
+.score-box.shake-medium {
+  animation: shake-medium 0.5s ease;
+}
+.score-box.shake-strong {
+  animation: shake-strong 0.5s ease;
+}
+
+/* 색상 상태 */
+.score-box.green {
+  background-color: #ffffff;
+  border-color: #28a745;
+  color: #28a745;
+}
+.score-box.orange {
+  background-color: #fd7e14;
+  border-color: #fd7e14;
+  color: white;
+}
+.score-box.red {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+/* 강력한 지진 애니메이션 */
+@keyframes shake-earthquake {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-5px, 5px) rotate(-1deg); }
+  20% { transform: translate(5px, -5px) rotate(1deg); }
+  30% { transform: translate(-8px, 8px) rotate(-2deg); }
+  40% { transform: translate(8px, -8px) rotate(2deg); }
+  50% { transform: translate(-10px, 10px) rotate(-3deg); }
+  60% { transform: translate(10px, -10px) rotate(3deg); }
+  70% { transform: translate(-8px, 8px) rotate(-2deg); }
+  80% { transform: translate(8px, -8px) rotate(2deg); }
+  90% { transform: translate(-5px, 5px) rotate(-1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* 색상: 보라색 */
+.score-box.purple {
+  background-color: #6f42c1;
+  border-color: #6f42c1;
+  color: #fff;
+}
+
+/* 진동 효과 클래스 */
+.score-box.shake-earthquake {
+  animation: shake-earthquake 0.7s ease;
+}
+
+/* 버튼 커지기 */
+.top-right-btn.big-buttons button {
+  transform: scale(1.4);
+  transition: transform 0.3s ease;
+}
+/* 화면 전체 깜빡임 효과 */
+.flash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  animation: flashAnim 0.3s ease;
+}
+/* 빨간 깜빡임 */
+.flash-red {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: red;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  animation: flashAnim 0.3s ease;
+}
+
+@keyframes flashAnim {
+  0% { opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+body.bg-transition-blue {
+  animation: bgBlue 2s ease-in-out forwards;
+}
+@keyframes bgBlue {
+  from { background-color: #f0f4f8; }
+  to { background-color: #d0e8ff; }
+}

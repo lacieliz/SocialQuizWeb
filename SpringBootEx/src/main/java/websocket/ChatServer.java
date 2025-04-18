@@ -1,87 +1,111 @@
 package websocket;
 
-import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 
-@Component
-public class ChatServer implements Runnable {
+import jakarta.websocket.OnClose;
+import jakarta.websocket.OnError;
+import jakarta.websocket.OnMessage;
+import jakarta.websocket.OnOpen;
+import jakarta.websocket.Session;
+import jakarta.websocket.server.ServerEndpoint;
 
-    private static final int PORT = 23456;
-    private ServerSocket serverSocket;
-    private final List<Socket> clients = new CopyOnWriteArrayList<>();
-    private boolean running = false;
-
-    @EventListener(ContextRefreshedEvent.class)
-    public void startServer() {
-        if (!running) {
-            new Thread(this).start();
-            running = true;
-            System.out.println("✅ ChatServer starting on port " + PORT);
-        } else {
-            System.out.println("⚠️ ChatServer already running. Skipping re-initialization.");
-        }
-    }
-
-    @Override
-    public void run() {
-        try {
-            serverSocket = new ServerSocket(PORT);
-            System.out.println("✅ ChatServer started on port " + PORT);
-
-            while (true) {
-                Socket clientSocket = serverSocket.accept();
-                clients.add(clientSocket);
-                new Thread(new ClientHandler(clientSocket)).start();
-            }
-        } catch (BindException e) {
-            System.err.println("🚫 포트 " + PORT + "는 이미 사용 중입니다. ChatServer는 이미 실행된 상태일 수 있습니다.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private class ClientHandler implements Runnable {
-        private final Socket socket;
-        private BufferedReader in;
-
-        public ClientHandler(Socket socket) {
-            this.socket = socket;
-        }
-
-        public void run() {
-            try {
-                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                String message;
-                while ((message = in.readLine()) != null) {
-                    broadcastMessage(message);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                clients.remove(socket);
-                try {
-                    socket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+@ServerEndpoint( value = "/ChatingServer", configurator = CustomSpringConfigurator.class )
+public class ChatServer {
+	
+	@Autowired
+	private ChatService chatService;
+	
+	private static final Map<String, Set<Session>> gameRooms = new ConcurrentHashMap<>();
+    private static final Map<Session, String> userNames = new ConcurrentHashMap<>();
+    private static final Map<Session, String> gameTypes = new ConcurrentHashMap<>();
+    private static final Map<String, String> lastWordInRoom = new ConcurrentHashMap<>();
+	
+	private static Set<Session> clients = 
+			Collections.synchronizedSet(new HashSet<Session>());
+	
+	@OnOpen
+	public void onOpen(Session session) throws IOException {
+		clients.add(session);
+		System.out.println("채팅창 연결: " + session.getId());
+		
+		broadcast( "SYSTEM|현재 접속자 수:" + clients.size());
+	}
+	
+	@OnMessage
+	public void onMessage(String message, Session session) throws IOException{
+		if( message.startsWith( "JOIN|" )) {
+			String[] parts = message.split("\\|");
+			String gameType= parts[1];	// chat 부분
+			String nickname = parts[2];	// nickname 부분
+			
+			gameRooms.putIfAbsent(gameType, ConcurrentHashMap.newKeySet());
+			gameRooms.get(gameType).add(session);
+			userNames.put(session, nickname);
+			gameTypes.put(session, gameType );
+			
+		    session.getBasicRemote().sendText("[" + gameType + "]에 참가했습니다.");
+			return;
+		}
+		
+		// 게임방에 참여한 후 메시지 처리
+        String nickname = userNames.get(session);
+        String gameType = gameTypes.get(session);
+        Set<Session> room = gameRooms.get(gameType);
+        
+        // ✅ 메시지를 nickname|단어 형식으로 분리
+        String[] msgParts = message.split("\\|");
+        if (msgParts.length < 2) {
+            session.getBasicRemote().sendText("SYSTEM|❌ 잘못된 메시지 형식입니다.");
+            return;
         }
 
-        private void broadcastMessage(String message) {
-            for (Socket client : clients) {
-                try {
-                    PrintWriter out = new PrintWriter(client.getOutputStream(), true);
-                    out.println(message);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        String sender = msgParts[0];
+        String currentWord = msgParts[1].trim();
+
+        // 같은 게임방의 모든 세션에 메시지 전송
+        for (Session s : room) {
+            if (s.isOpen()) {
+                s.getBasicRemote().sendText("💬 [" + nickname + "] : " + currentWord);
             }
         }
-    }
+       	/*
+		System.out.println(session.getId() + ":" + message);
+		synchronized (clients) {
+			for(Session client : clients) {
+				if(!client.equals(session)) {
+					client.getBasicRemote().sendText(message);
+				}
+			}
+		}
+		*/
+	}
+	@OnClose
+	public void onClose(Session session) {
+		clients.remove(session);
+		System.out.println("웹소켓 종료 : " + session.getId());
+	}
+	
+	@OnError
+	public void onError(Throwable e) {
+		System.out.println("에러 발생");
+		e.printStackTrace();
+	}
+	
+	private void broadcast(String message) throws IOException {
+		synchronized ( clients ) {
+			for ( Session client : clients ) {
+				if( client.isOpen()) {
+					client.getBasicRemote().sendText(message);
+				}
+			}
+		}
+	}
+
 }

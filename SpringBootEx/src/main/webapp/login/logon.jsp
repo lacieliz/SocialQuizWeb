@@ -12,7 +12,6 @@
 		<h2> 아직,<br>게임 회원이<br>아니신가요?</h2>
 		 <p>회원가입하고<br>퀴즈 랭킹에 도전해 보세요!</p>
       <button class="signup-button" onclick="location='/signup'">회원가입</button>
-      <button class="signup-button" onclick="location='/home'">${btn_main}</button>
 	</div>
 	
 	<div class="login-box">

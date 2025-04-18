@@ -29,10 +29,18 @@ public class HomeController {
 		if(memId == "anonymousUser")
 			memId = null;
 		
-		//String nickname = customUserDetailsService.getUser().getNickname();
-		String auth = customUserDetailsService.getUser().getAuth();
+		else {
+			// 현재 로그인한 사용자 정보
+	        User user = customUserDetailsService.getUser();
+
+	        String auth = user.getAuth();
+	        String nickname = user.getNickname(); // ✅ 닉네임 가져오기
+
+	        session.setAttribute("Auth", auth);
+	        session.setAttribute("nickname", nickname); // ✅ 닉네임 세션에 저장
+	   
+		}
 		session.setAttribute("memId", memId);
-		session.setAttribute("Auth", auth );
 
 		return "home/home";
 	}	

@@ -15,17 +15,33 @@
 		<script type="text/javascript">
 			alert(error_reply);
 		</script>
-		<meta http-equiv="refresh" content="0; url=qnalist?pageNum=${pageNum}">
+		<c:if test="${memId eq 'fruit'}">
+			<meta http-equiv="refresh" content="0; url=qnalist?pageNum=${pageNum}">
+		</c:if>
+		<c:if test="${memId ne 'fruit'}">
+			<meta http-equiv="refresh" content="0; url=qnamylist?pageNum=${pageNum}">
+		</c:if>
 	</c:when>
 
 	<c:when test="${result eq 0}">
 		<script type="text/javascript">
 			alert(error_delete);
 		</script>
-		<meta http-equiv="refresh" content="0; url=qnalist?pageNum=${pageNum}">
+		<c:if test="${memId eq 'fruit'}">
+			<meta http-equiv="refresh" content="0; url=qnalist?pageNum=${pageNum}">
+		</c:if>
+		<c:if test="${memId ne 'fruit'}">
+			<meta http-equiv="refresh" content="0; url=qnamylist?pageNum=${pageNum}">
+		</c:if>
+		
 	</c:when>
 
 	<c:when test="${result eq 1}">
-		<c:redirect url="qnalist?pageNum=${pageNum}" />
+		<c:if test="${memId eq 'fruit'}">
+			<c:redirect url="qnalist?pageNum=${pageNum}" />
+		</c:if>
+		<c:if test="${memId ne 'fruit'}">
+			<c:redirect url="qnamylist?pageNum=${pageNum}" />
+		</c:if>
 	</c:when>
 </c:choose>

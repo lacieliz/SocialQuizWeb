@@ -3,7 +3,7 @@ package control.oxgame;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.springframework.security.authentication.AuthenticationManager;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,14 +18,8 @@ import setgame.SetOxMapper;
 @Controller
 @RequestMapping("/setoxgame")
 public class SetListController {
-
-    private final AuthenticationManager authenticationManager;
 	@Resource
 	private SetOxMapper setoxMapper;
-
-    SetListController(AuthenticationManager authenticationManager) {
-        this.authenticationManager = authenticationManager;
-    }
 	
 	@GetMapping
 	public String setOxList( Model model ) throws Exception {
@@ -50,13 +44,10 @@ public class SetListController {
         String scores[] = request.getParameterValues("S");
 
         setoxMapper.deleteOxList();
-        
-        System.out.println("[/setoxgame] Qlength : " + questions.length);
-        
+
         SetOxBean s = new SetOxBean();
         for(int i=0; i<questions.length;i++){
         	   String temp[] = request.getParameterValues("answer"+i);
-        	   
         	   answers[i] = temp[0];
         	   
                s.setQuiz_id(i+1);
@@ -69,11 +60,6 @@ public class SetListController {
        		setoxMapper.insertOxList(s);
         }
        
-        //String deleteSql = "DELETE FROM quizzes";
-        
-		
-		//setoxMapper.insertOxList(map);
-        
 		return "admin/setOX";
 	}
 }

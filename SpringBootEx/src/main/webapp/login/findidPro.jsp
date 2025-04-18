@@ -6,7 +6,7 @@
 
 <c:if test="${empty result}">
 	<script>
-    erroralert("이메일 없는데용?");
+    erroralert("이메일 존재하지 않습니다. 다시 확인해주세요.");
     </script>
 </c:if>
     

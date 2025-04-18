@@ -37,7 +37,6 @@ try {
             <th class="text-center">닉네임</th>
             <th class="text-center">점수</th>
             <th class="text-center">판수</th>
-            <th class="text-center">상태</th>
         </tr>
     </thead>
     <tbody>
@@ -51,18 +50,6 @@ try {
             <td class="text-center"><%= rs.getString("nickname") %></td>
             <td class="text-center"><%= rs.getInt("rank_score") %></td>
             <td class="text-center"><%= rs.getInt("play_count") %></td>
-            <td class="text-center" style="vertical-align: middle; padding: 0;">
-			  <div style="
-			    width: 12px;
-			    height: 12px;
-			    background-color: red;
-			    border-radius: 50%;
-			    display: inline-block;
-			    margin: 0 auto;
-			    padding: 0;
-			    line-height: 0;
-			  "></div>
-			</td>
 
 
 

@@ -21,7 +21,6 @@ public class LogonController {
 	
 	@GetMapping
 	public String form( Model model, HttpServletRequest request, HttpServletResponse response) {
-		
 	
 		//로그인 페이지에 들어왔을 때 아이디 저장 되있으면 아이디값 넣어주기
 		System.out.println("체크여부:" +request.getParameter("rememberId"));

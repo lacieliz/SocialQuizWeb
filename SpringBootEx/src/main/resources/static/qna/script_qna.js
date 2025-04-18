@@ -27,40 +27,41 @@ window.addEventListener(
 		// 글쓰기	
 		let writeform = document.querySelector( "form[name='writeform']" );
 		if( writeform ) {
-			writeform.addEventListener(
-				"submit",
-				( event ) => {
-					let user_id = document.querySelector( "input[name='user_id']" );
-					let subject = document.querySelector( "input[name='subject']" );
-					let content = document.querySelector( "textarea[name='content']" );
-					let passwd = document.querySelector( "input[name='passwd']" );
-					let tag = /<[^>]*>/; 					
-					if( ! user_id.value ) {
-						alert( msg_writer );
-						event.preventDefault();
-						user_id.focus();
-					} else if( ! subject.value ) {
-						alert( msg_subject );
-						event.preventDefault();
-						subject.focus();
-					} else if( ! content.value ) {
-						alert( msg_content );
-						event.preventDefault();
-						content.focus();
-					} else if( ! passwd.value ) {
-						alert( msg_passwd );
-						event.preventDefault();
-						passwd.focus();
-					} else if( tag.test( writer.value ) 
-						|| tag.test( subject.value ) 
-						|| tag.test( content.value ) 
-						|| tag.test( passwd.value ) ) {
-						alert( msg_tag );
-						event.preventDefault();
-						writer.focus();
-					}					
-				}			
-			);
+			writeform.addEventListener("submit", (event) => {
+				let userId = document.querySelector("input[name='userId']");
+				let subject = document.querySelector("input[name='subject']");
+				let content = document.querySelector("textarea[name='content']");
+				let passwd = document.querySelector("input[name='passwd']");
+				let tag = /<[^>]*>/;
+
+				if (!userId || !userId.value.trim()) {
+					alert(msg_writer);
+					event.preventDefault();
+					userId?.focus();
+				} else if (!subject || !subject.value.trim()) {
+					alert(msg_subject);
+					event.preventDefault();
+					subject?.focus();
+				} else if (!content || !content.value.trim()) {
+					alert(msg_content);
+					event.preventDefault();
+					content?.focus();
+				} else if (passwd && !passwd.value.trim()) {
+					alert(msg_passwd);
+					event.preventDefault();
+					passwd?.focus();
+				} else if (
+					tag.test(userId.value) ||
+					tag.test(subject.value) ||
+					tag.test(content.value) ||
+					(passwd && tag.test(passwd.value))
+				) {
+					alert(msg_tag);
+					event.preventDefault();
+					userId.focus();
+				}
+			});
+
 		} // writeform 있는 경우
 		
 		// 글수정
@@ -107,5 +108,13 @@ window.addEventListener(
 );
 
 
+// 게시글 클릭 시 AJAX로 본문 불러오기
+$(document).on("click", "a", function (e) {
+  const href = $(this).attr("href");
+  if (href && (href.startsWith("qnacontent") || href.startsWith("qnamylist"))) {
+    e.preventDefault();
+    $("#main-content").load(href);
+  }
+});
 
 

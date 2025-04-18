@@ -7,12 +7,14 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import board.BoardDBBean;
 import board.BoardDataBean;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping( "/boardlist" )
@@ -77,5 +79,63 @@ public class BoardList {
 		}
 		
 		return "board/list";
+	}
+	
+	@PostMapping
+	public String boardSearchList(@RequestParam(required = false) String pageNum,
+				@RequestParam(required = false) String query,
+	                        HttpSession session,
+	                        Model model) throws Exception {
+
+
+	    int pageSize = 10;
+	    int pageBlock = 5;
+	    int count;
+	    int currentPage;
+	    int start;
+	    int end;
+	    int number;
+	    int pageCount;
+	    int startPage;
+	    int endPage;
+
+	    if (pageNum == null || pageNum.isEmpty()) {
+	        pageNum = "1";
+	    }
+
+	    currentPage = Integer.parseInt(pageNum);
+	    start = (currentPage - 1) * pageSize + 1;
+	    end = start + pageSize - 1;
+
+	    Map<String, Object> map = new HashMap<>();
+	    map.put("subject", query);
+	    count = boardDao.searchCount(map); // 기존 로직
+	
+
+	    if (end > count) end = count;
+	    number = count - (currentPage - 1) * pageSize;
+	    pageCount = (count / pageSize) + (count % pageSize > 0 ? 1 : 0);
+	    startPage = (currentPage / pageBlock) * pageBlock + 1;
+	    if (currentPage % pageBlock == 0) startPage -= pageBlock;
+	    endPage = startPage + pageBlock - 1;
+	    if (endPage > pageCount) endPage = pageCount;
+
+	    model.addAttribute("pageBlock", pageBlock);
+	    model.addAttribute("count", count);
+	    model.addAttribute("number", number);
+	    model.addAttribute("pageNum", pageNum);
+	    model.addAttribute("currentPage", currentPage);
+	    model.addAttribute("pageCount", pageCount);
+	    model.addAttribute("startPage", startPage);
+	    model.addAttribute("endPage", endPage);
+
+	    if (count > 0) {
+	        map.put("start", start);
+	        map.put("end", end);
+	        List<BoardDataBean> dtos = boardDao.searchArticles(map);  // 🔄 subject 포함된 map
+	        model.addAttribute("dtos", dtos);
+	    }
+
+	    return "board/list";
 	}
 }

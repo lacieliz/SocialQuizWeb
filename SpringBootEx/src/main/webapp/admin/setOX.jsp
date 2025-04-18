@@ -20,6 +20,7 @@
 		<div class="button-container">
 		   <input type="button" value="문항 추가" id="button_Add">
 		   <input type="button" value="설정 완료" onclick="modifyOX()">
+		   <input type="button" value="메인페이지" onclick="location='admin'">
 		</div>
 		
 		<table border="1" name="table_list">
@@ -28,7 +29,7 @@
 		      	<th> 문제 </th>
 		      	<th> 정답 </th>
 		      	<th> 점수 </th>
-		      	<td> 삭제 </td>
+		      	<th> 삭제 </th>
 		    </tr>
 			<c:forEach var="set" items="${dtos}">
 		<tr name="tr_QnA${set.quiz_id}">

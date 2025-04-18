@@ -9,6 +9,7 @@
 <h2>공지사항</h2>
 <br>
 
+<form  method="post" action="boardlist">
 <table>
 	<tr>
 		<td colspan="5" class="input center-content"> 
@@ -69,7 +70,7 @@
 		</c:forEach>
 	</c:if>
 </table>
-
+</form>
 <br>
 
 <center>

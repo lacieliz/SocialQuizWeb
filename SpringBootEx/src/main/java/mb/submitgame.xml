@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="game.OxMapper">
+
+	<insert id="submitScore" parameterType="setgame.SetOxBean">
+ 		INSERT INTO game_records ( game_id, userId, record_time, game_score ) 
+ 		VALUES ( #{game_id}, #{userId}, #{record_time}, #{game_score} )
+ 	</insert>
+
+	
+	 </mapper>

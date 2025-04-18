@@ -41,11 +41,14 @@ body {
     grid-area: a;
     background: linear-gradient(90deg, #4f68ff, #9069ff);
     color: white;
-    font-size: 1.8rem;
-    font-weight: bold;
     text-align: center;
-    line-height: 100px;
-    letter-spacing: 1px;
+    display: flex;               /* ✅ flex 적용 */
+    flex-direction: column;      /* ✅ 세로로 정렬 */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-weight: bold;
+    border-radius: 16px;
 }
 
 /* 추천 게임 */
@@ -159,3 +162,10 @@ a:hover {
         padding: 1rem;
     }
 }
+.nickname-msg {
+		font-size: 18px;
+		font-weight: 600;
+		background: transparent !important; /* ✅ 완전 투명 */
+		margin-bottom: 8px;
+	}
+

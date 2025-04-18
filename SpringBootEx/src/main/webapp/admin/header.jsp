@@ -21,22 +21,20 @@
 		    </div>
 		    
 		    	<ul class="nav-menu">
-			      <li class="nav-item"><a class="nav-link active" href="admin">관리자 홈</a></li>
-			      <li class="nav-item"><a class="nav-link" href="setoxgame">O/X게임 문제 설정</a></li>
-			      <li class="nav-item"><a class="nav-link" href="rank">랭킹</a></li>
-			      <li class="nav-item"><a class="nav-link" href="qnalist">문의게시판</a></li>
-			      <li class="nav-item"><a class="nav-link" href="boardlist">공지사항</a></li>
-			      <li class="nav-item"><a class="nav-link" href="socketword">접속자 조회</a></li>
+			      <li class="nav-item"><a class="nav-link active" href="/admin">관리자 홈</a></li>
+			      <li class="nav-item"><a class="nav-link" href="/setoxgame">O/X게임 문제 설정</a></li>
+			      <li class="nav-item"><a class="nav-link" href="/rank">랭킹</a></li>
+			      <li class="nav-item"><a class="nav-link" href="/qnalist">문의게시판</a></li>
+			      <li class="nav-item"><a class="nav-link" href="/boardlist">공지사항</a></li>
+			      <li class="nav-item"><a class="nav-link" href="/acitivemems">접속자 조회</a></li>
 			    </ul>
 		    
 			<div class="header-buttons">
 				<c:if test="${memId eq null}">
 					<button type="button" class="btn btn-outline-dark" onclick="location='/logon'">로그인</button>
-	 	   		 	<button type="button" class="btn btn-outline-dark" onclick="location='/signup'">회원가입</button>
 	 	   		</c:if>
 	 	   		<c:if test="${memId ne null}">
 				    <button type="button" class="btn btn-outline-dark" onclick="location='/logout'">로그아웃</button>
-					<button type="button" class="btn btn-outline-dark" onclick="location='/mypage'">마이페이지</button>
 					&nbsp;	
 				</c:if>
 		    </div>

@@ -36,11 +36,6 @@
             </div>
 
             <div class="form-group">
-                <label for="file">첨부 파일</label>
-                <input type="file" id="file" name="file" placeholder="파일을 등록해주세요">
-            </div>
-
-            <div class="form-group">
                 <button type="submit" class="submit-btn">문의하기</button>
             </div>
         </form>

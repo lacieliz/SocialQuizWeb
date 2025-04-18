@@ -18,7 +18,7 @@
 </c:if>
 <c:if test="${checkPwd eq 0}">
 	<script type="text/javascript">
-		erroralert( error_passwd );
+		erroralert( error_passwd1 );
 		  $('#main-content').load('deleteuser');
 	</script>
 </c:if>

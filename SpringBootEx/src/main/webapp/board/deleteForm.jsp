@@ -17,8 +17,8 @@
 		</tr>
 		<tr>
 			<th colspan="2">
-				<input class="inputbutton" type="submit" value="${btn_del}">
-				<input class="inputbutton" type="button" value="${btn_del_cancle}"
+				<input class="inputbutton" type="submit" value="${board_btn_del}">
+				<input class="inputbutton" type="button" value="${board_btn_cancle}"
 					onclick="location='boardlist?pageNum=${pageNum}'">
 			</th>
 		</tr>

@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import qna.QnaDataBean;
+
 @Service
 public class BoardDBBean {
 	@Autowired
@@ -14,7 +16,9 @@ public class BoardDBBean {
 	public int getCount() {
 		return boardMapper.getCount();
 	}
-
+	public int searchCount(Map<String, Object> map) {
+		return boardMapper.searchCount(map);
+	}
 	// 글쓰기
 	public int insertArticle(BoardDataBean boardDto) {
 		int num = boardDto.getNum();
@@ -45,7 +49,9 @@ public class BoardDBBean {
 		return boardMapper.getArticles(map);
 	}
 
-	
+	public List<BoardDataBean> searchArticles(Map<String, Object> map) {
+		return boardMapper.searchArticles(map);
+	}
 
 	public BoardDataBean getArticle(int num) {
 		return boardMapper.getArticle(num);

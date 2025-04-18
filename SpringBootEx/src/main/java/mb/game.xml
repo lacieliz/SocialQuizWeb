@@ -11,7 +11,7 @@
 	<select id="getCount" parameterType="java.util.Map" resultType="int">
 	    select count(*) from quizzes
 	</select>
-
+ 	
     <insert id="insertOxList" parameterType="setgame.SetOxBean">
 	    INSERT INTO quizzes (quiz_id, game_id, category_id, question, answer, quiz_score)
 		VALUES (#{quiz_id}, #{game_id}, #{category_id}, #{question}, #{answer}, #{quiz_score})

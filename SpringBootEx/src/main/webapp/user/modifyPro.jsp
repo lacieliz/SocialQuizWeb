@@ -9,7 +9,7 @@
 	<script type="text/javascript">
 		alert( error_modify );
 	</script>	
-	<meta http-equiv="refresh" content="0; url=home">
+
 </c:if>
 <c:if test="${result eq 1}">	
 	<c:redirect url="logout"/>	

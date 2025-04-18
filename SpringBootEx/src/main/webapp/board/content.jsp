@@ -41,13 +41,11 @@
 		<c:if test="${sessionScope.memId eq boardDto.userId}">
 			<input class="inputbutton" type="button" value="${btn_modify}"
 				onclick="location='boardmodify?num=${num}&pageNum=${pageNum}'">
-			<input class="inputbutton" type="button" value="${btn_delete}"
+			<input class="inputbutton" type="button" value="${board_btn_del}"
 				onclick="location='boarddelete?num=${num}&pageNum=${pageNum}'">
 		</c:if>
 
 		<%-- 모든 사용자에게 보여지는 버튼 --%>
-		<input class="inputbutton" type="button" value="${btn_reply}"
-			onclick="location='boardwrite?num=${boardDto.num}&ref=${boardDto.ref}&re_step=${boardDto.re_step}&re_level=${boardDto.re_level}'">
 		<input class="inputbutton" type="button" value="${btn_list}"
 			onclick="location='boardlist?pageNum=${pageNum}'">
 

@@ -59,11 +59,18 @@
 }
 
 /* ✅ 상태 표시 점 */
-.status-dot {
+.status-none {
     width: 10px;
     height: 10px;
     border-radius: 50%;
     background-color: red;
+    margin: 0 auto;
+}
+.status-active {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: green;
     margin: 0 auto;
 }
 

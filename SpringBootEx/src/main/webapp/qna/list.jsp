@@ -3,8 +3,8 @@
 <%@ include file="../setting.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<link rel="stylesheet" type="text/css" href="${qna}viewqna.css">
-<script type="text/javascript" src="${qna}script_qna.js"></script>
+<link rel="stylesheet" type="text/css" href="/qna/viewqna.css">
+<script type="text/javascript" src="/qna/script_qna.js"></script>
 
 <h2>1대1 게시판</h2>
 <br>
@@ -13,17 +13,15 @@
 	<tr>
 		<td colspan="5" class="input center-content"> 
 			<div class="search-container">
-			<c:if test="${memId eq 'sera '}">
-				<input type="text" name="query" placeholder="검색어를 입력해주세요" style="width:40%" required>
-				<button type="submit">답변 필요한 글</button>
-				<button class="button" onclick="location.href='boardwrite'">답변 작성</button>
-			</c:if>
-			<c:if test="${memId ne 'sera'}">
-				<input type="text" name="query" placeholder="검색어를 입력해주세요" style="width:40%" required>
-				<button type="submit">검색</button>
-				<button class="button" onclick="location.href='boardwrite'">${str_write}</button>
-			</c:if>
-				<button class="button" onclick="location.href='home'">메인페이지</button>
+				<!-- 메인페이지 버튼 -->
+				<c:choose>
+				    <c:when test="${memId eq 'fruit'}">
+				        <button class="button" onclick="location.href='/admin'">메인페이지</button>
+				    </c:when>
+				    <c:otherwise>
+				        <button class="button" onclick="location.href='/home'">메인페이지</button>
+				    </c:otherwise>
+				</c:choose>
 			</div>
 		</td>
 	</tr>
@@ -32,6 +30,7 @@
 		<th style="width:40%">${str_subject}</th>
 		<th style="width:13%">${str_writer}</th>
 		<th style="width:15%">${str_reg_date}</th>
+		<th style="width:10%"> 답변 여부 </th>
 	</tr>
 
 	<c:if test="${count eq 0}">
@@ -64,13 +63,29 @@
 				<td style="text-align: center;">
 					<fmt:formatDate value="${dto.reg_date}" pattern="yyyy-MM-dd HH:mm" />
 				</td>
+				<td align="center">
+					<c:choose>
+						<c:when test="${dto.re_level eq 0}">
+							<c:choose>
+								<c:when test="${dto.replyCount gt 0}">
+									<span style="color: green; font-weight: bold;">답변완료</span>
+								</c:when>
+
+								<c:otherwise>
+									<button onclick="location='qnacontent?num=${dto.num}&pageNum=${pageNum}&number=${number + 1}'">답변</button>
+								</c:otherwise>
+							</c:choose>
+						</c:when>
+						<c:otherwise>
+							<!-- 답글인 경우는 답변 여부 칸 비워둠 -->
+						</c:otherwise>
+					</c:choose>
+				</td>
 			</tr>
 		</c:forEach>
 	</c:if>
 </table>
-
 <br>
-
 <center>
 	<c:if test="${count gt 0}">
 		<c:if test="${startPage gt pageBlock}">

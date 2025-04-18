@@ -48,17 +48,22 @@ public class SecurityConfig {
 		http.csrf(
 			AbstractHttpConfigurer::disable
 		).authorizeHttpRequests(
-			authz -> authz.requestMatchers("/fail", "/signup/**","/home/**", 
+			authz -> authz.requestMatchers("/fail", "/signup/**",
 					"/login/**", "/logon/**", "/input/**", "/security/**", 
 					"main", "/sendmail/**", "/sendmailcheck", "/mail/**",
-					"/findid", "/findpwd","/deleteuser","/user/**","/securitydb/**",
-					"/modifyuser","/board/**","/setgame/**","/rank").permitAll()
-					.requestMatchers( "/member/**").hasRole( "MEMBER" )
+					"/findid", "/findpwd","/deleteuser","/securitydb/**",
+					"/modifyuser","/board/**","/setgame/**","/rank","/changepwd").permitAll()
+					.requestMatchers( "/member/**","/user/**").hasRole( "MEMBER" )
 					.requestMatchers( "/admin/**" ).hasRole( "ADMIN" )
 					.anyRequest().authenticated()
 		).httpBasic(
 			Customizer.withDefaults()
-		).formLogin(
+		).sessionManagement(sessionManagement -> sessionManagement
+				.maximumSessions(1)
+				.maxSessionsPreventsLogin(false)
+				.expiredUrl("/logon")
+		)
+		.formLogin(
 			f -> f.loginPage( "/logon" )
 				.usernameParameter( "userId" )
 				.passwordParameter( "passwd" )
@@ -66,9 +71,9 @@ public class SecurityConfig {
 			    .successHandler(new SetLoginPage())
 		).logout(
 			f -> f.logoutUrl( "/logout" )
-				.invalidateHttpSession( true )				
-				.deleteCookies( "JSESSIONID")			
-				.logoutSuccessUrl( "/logon" )
+			.invalidateHttpSession( true )				
+			.deleteCookies( "JSESSIONID")
+		    .logoutSuccessHandler(new SetLogoutPage())
 		);
 		
 		return http.build();

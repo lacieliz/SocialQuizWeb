@@ -10,4 +10,10 @@ public class GameRecordController {
     public String showGameRecordPage() {
         return "game_record/game_record"; // => /webapp/game_record/game_record.jsp
     }
+    
+    @GetMapping("/record")
+    public String myRecord() {
+    	return "rank/myrecord";
+    }
+    
 }

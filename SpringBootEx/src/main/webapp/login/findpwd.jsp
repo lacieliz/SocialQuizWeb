@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 if (data.verified) {
                     alert('이메일 인증에 성공했습니다!');
-                    location.href = '/logonchangepwd';
+                    location.href = '/changepwd';
                 } else {
                     alert('인증번호가 올바르지 않습니다.');
                 }
@@ -66,8 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
             if (result === 'success') {
                 lastSentEmail = email;
                 alert('인증번호가 이메일로 전송되었습니다!');
-            } else if (result === 'duplicate') {
-                alert('중복된 이메일입니다! 다른 이메일을 사용해주세요.');
+            } else if (result === 'none') {
+                alert('이메일이 없습니다. 다시 확인해 주세요.');
             } else {
                 alert('이메일 전송 실패');
             }

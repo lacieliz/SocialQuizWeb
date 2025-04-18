@@ -17,6 +17,12 @@ public class QnaDBBean {
 		return qnaMapper.getCount();
 	}
 
+	public int getMyCount(String userId) {
+		return qnaMapper.getMyCount(userId);
+	}
+	public int searchMyCount(Map<String, Object> map) {
+		return qnaMapper.searchMyCount(map);
+	}
 	// 글쓰기
 	public int insertArticle(QnaDataBean qnaDto) {
 		int num = qnaDto.getNum();
@@ -49,6 +55,10 @@ public class QnaDBBean {
 	
 	public List<QnaDataBean> getMyArticles(Map<String, Object> map) {
 		return qnaMapper.getMyArticles(map);
+	}
+	
+	public List<QnaDataBean> searchMyArticles(Map<String, Object> map) {
+		return qnaMapper.searchMyArticles(map);
 	}
 
 	public QnaDataBean getArticle(int num) {

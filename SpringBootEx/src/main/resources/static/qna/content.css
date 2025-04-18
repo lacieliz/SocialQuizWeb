@@ -1,0 +1,87 @@
+@charset "UTF-8";
+/* 전체 레이아웃 */
+#main-content {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #333;
+}
+
+/* 제목 */
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* 테이블 기본 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fafafa;
+    font-size: 15px;
+}
+
+/* 테이블 제목 셀 */
+th {
+    background-color: #f0f0f5;
+    padding: 12px 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* 테이블 내용 셀 */
+td {
+    padding: 12px 10px;
+    border: 1px solid #ddd;
+    vertical-align: top;
+}
+
+/* <pre>로 감싼 본문 내용 */
+pre {
+    margin: 0;
+    font-family: inherit;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* 버튼 스타일 */
+.inputbutton {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.inputbutton:hover {
+    background-color: #007bff;
+}
+
+/* 버튼 전체를 가운데 정렬 */
+th[colspan="6"] {
+    text-align: center;
+    background-color: #fff;
+    border: none;
+}
+
+/* 반응형 지원 */
+@media (max-width: 768px) {
+    table, th, td {
+        font-size: 14px;
+    }
+
+    .inputbutton {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

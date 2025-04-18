@@ -13,6 +13,11 @@
 		SELECT COUNT(*) FROM notices
 	</select>
 
+	<select id="searchCount" parameterType="map" resultType="int">
+	  SELECT COUNT(*) FROM notices
+	  WHERE subject LIKE '%' || #{subject} || '%'
+	</select>
+
 	<!-- 답글 정렬 처리 -->
 	<update id="addReply" parameterType="board.BoardDataBean">
 		UPDATE notices SET re_step = re_step + 1
@@ -40,6 +45,23 @@
 		)
 		WHERE rnum &gt;= #{start}
 	</select>
+	
+			<select id="searchArticles" parameterType="map" resultType="board.BoardDataBean">
+		  SELECT * FROM (
+		    SELECT ROWNUM rnum, A.* FROM (
+		      SELECT num, userId, subject, reg_date, ref, re_step, re_level, content
+		      FROM notices
+		      WHERE ref IN (
+		        SELECT DISTINCT ref
+		        FROM notices
+		           WHERE subject LIKE '%' || #{subject} || '%'
+		      )
+		      ORDER BY ref DESC, re_step ASC
+		    ) A
+		    WHERE ROWNUM &lt;= #{end}
+		  )
+		  WHERE rnum &gt;= #{start}
+		</select>
 
 	<!-- 글 상세 보기 -->
 	<select id="getArticle" parameterType="int" resultType="board.BoardDataBean">

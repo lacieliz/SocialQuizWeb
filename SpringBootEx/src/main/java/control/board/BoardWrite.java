@@ -43,6 +43,11 @@ public class BoardWrite {
 	    String userId = (String) request.getSession().getAttribute("memId");
 	    boardDto.setUserId(userId); // 자동 주입
 
+	    if(boardDto.getSubject()=="" || boardDto.getContent()=="") {
+	    	model.addAttribute("isEmpty",1);
+		    return "board/writePro";
+
+	    }
 	    // 작성일 설정
 	    boardDto.setReg_date(new Timestamp(System.currentTimeMillis()));
 
